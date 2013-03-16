@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <!--TODO: also add hammer and make sure we are using cdn only if we have internet, otherwise degrading to local libraries-->
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="../libs/hammer.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../src/knockouch.js"></script>
+</head>
+    <body>
+        <span data-bind="text:someText"></span>
+        <button data-bind="tap:tappy"></button>
+    </body>
+    <script>
+        var model = { someText: ko.observable('empty'), tappy: function () { alert('he tapped me'); }};
+        ko.applyBindings(model);
+    </script>
+</html>
