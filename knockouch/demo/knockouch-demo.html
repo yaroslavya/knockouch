@@ -10,10 +10,10 @@
 </head>
     <body>
         <span data-bind="text:someText"></span>
-        <button data-bind="tap:tappy"></button>
+        <button data-bind="hold:tappy"></button>
     </body>
     <script>
-        var model = { someText: ko.observable('empty'), tappy: function () { alert('he tapped me'); }};
+        var model = { someText: ko.observable('empty'), tappy: function (e) { model.someText('you just ' + e.type + 'ed.'); }};
         ko.applyBindings(model);
     </script>
 </html>
