@@ -9,7 +9,12 @@
         };
     };
     
-    var touchEvents = ['tap', 'doubletap', 'hold', 'swipe', 'drag', 'transform'];
+    var touchEvents = ['tap', 'doubletap', 'hold', 'rotate', 
+                       'drag', 'dragleft', 'dragright', 'dragup', 'dragdown', 
+                       'transform', 'transformstart', 'transformend', 
+                       'swipe', 'swipeleft', 'swiperight', 'swipeup', 'swipedown', 
+                       'pinch', 'pinchin', 'pinchout'];
+    
     for (var i = 0; i < touchEvents.length; i++) {
         var eventName = touchEvents[i];
         makeTouchHandlerShortcut(eventName);
