@@ -7,13 +7,42 @@
     <script src="../libs/hammer.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="../src/knockouch.js"></script>
+    <style>
+        body {
+            background-image:url(images/bg.png);
+        }
+        .scoreboard {
+            font-size:38px;
+            font-family:'Segoe UI';
+            
+
+        }
+        .container {
+            height:400px;
+            margin:10% 25% 10% 25%;
+            width:50%;
+            font-size:38px;
+            font-family:'Segoe UI';
+            border-width:2px;
+            border-style:dashed;
+            border-color:red;
+            
+        }
+
+    </style>
 </head>
-    <body>
-        <span data-bind="text:someText"></span>
-        <button data-bind="tap:tappy, hold:tappy, swipe:tappy, doubletap:tappy">knockouch me</button>
-    </body>
-    <script>
-        var model = { someText: ko.observable('do something with'), tappy: function (e) { model.someText('you just ' + e.type + 'ed.'); }};
-        ko.applyBindings(model);
-    </script>
+<body>
+    <div class="container" data-bind="tap:tappy, hold:tappy, swipe:tappy, doubletap:tappy">
+        <span class="scoreboard" data-bind="text:someText"></span>
+    </div>
+</body>
+<script>
+    var model = {
+        someText: ko.observable('do something with'),
+        tappy: function (e) {
+            model.someText('you just ' + e.type + 'ed.');
+        }
+    };
+    ko.applyBindings(model);
+</script>
 </html>
