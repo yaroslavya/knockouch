@@ -1,7 +1,7 @@
 ﻿(function (ko, touch) {
     function makeTouchHandlerShortcut(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
-            init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+            init: function (element, valueAccessor, allBindingsAccessor) {
                 var handler = valueAccessor();
                 var allBindings = allBindingsAccessor();
                 var options = getOptions(allBindings);
