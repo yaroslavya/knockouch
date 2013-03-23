@@ -1,4 +1,4 @@
-﻿(function (windows, ko, touch) {
+﻿(function (windows, ko) {
     var knockouch = function (lib, options) {
         knockouch.options = options || {};
         selectTouchLibrary(lib);
@@ -7,7 +7,6 @@
     knockouch.touchLibrary = {};
     knockouch.touch = {};
     knockouch.eventList = [];
-    knockouch.selectedLibrary = "";
 
     function makeTouchHandlerShortcut(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
@@ -88,4 +87,4 @@
     window.knockouch = knockouch;
     searchTouchLibrary();
 
-}(this, ko, Hammer));
+}(this, ko));
