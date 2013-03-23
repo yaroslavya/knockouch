@@ -1,43 +1,71 @@
 ﻿(function (windows, ko, touch) {
     var knockouch = function (lib, options) {
         knockouch.options = options || {};
-        knockouch.touchLibrary = lib || Zepto || touch;
-        init();
-    },
-    touch = {};
+        selectTouchLibrary(lib);
+    };
+
+    knockouch.touchLibrary = {};
+    knockouch.touch = {};
+    knockouch.eventList = [];
+    knockouch.selectedLibrary = "";
 
     function makeTouchHandlerShortcut(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
             init: function (element, valueAccessor, allBindingsAccessor) {
                 var handler = valueAccessor();
                 var allBindings = allBindingsAccessor();
-                var options = setMoreOptions(allBindings);
-                touch(element, touchEventName, handler, options);
+                knockouch.touch(element, touchEventName, handler, allBindings);
             }
         };
     };
 
+    function searchTouchLibrary() {
+        for (i in knockouch.touchlibrarys) {
+            var touchLibary = knockouch.touchlibrarys[i];
+            if (window[touchLibary] !== undefined) {
+                selectTouchLibrary(touchLibary);
+                break;
+            }
+        }
+    };
+
+    function selectTouchLibrary(library) {
+        knockouch.touchLibrary = library;
+        init();
+    };
+
     function setMoreOptions(bindings) {
         var options = knockouch.options;
-        for (i in hammerOptions) {
-            var optionName = hammerOptions[i];
+        for (i in knockouch.HammerOptions) {
+            var optionName = knockouch.HammerOptions[i];
             if (bindings[optionName] !== undefined && bindings[optionName].constructor !== Function) {
-                options[optionName] = bindings[optionName];
+                knockouch.options[optionName] = bindings[optionName];
             }
         }
         return options;
     };
 
-    var hammerTouchEvents  = ['tap', 'doubletap', 'hold', 'rotate',
+    knockouch.HammerWrapper = function (element, touchEventName, handler, bindings) {
+        var options = setMoreOptions(bindings);
+        Hammer(element, options).on(touchEventName, handler);
+    };
+
+    knockouch.ZeptoWrapper = function (element, touchEventName, handler) {
+        Zepto(element)[touchEventName](handler);
+    };
+
+    knockouch.touchlibrarys = ['Hammer', 'Zepto'];
+
+    knockouch.HammerTouchEvents  = ['tap', 'doubletap', 'hold', 'rotate',
                        'drag', 'dragleft', 'dragright', 'dragup',
                        'dragdown', 'transform', 'transformstart',
                        'transformend', 'swipe', 'swipeleft', 'swiperight',
                        'swipeup', 'swipedown', 'pinch', 'pinchin', 'pinchout'];
 
-    var zeptoTouchEvents = ['swipe', 'swipeLeft', 'swipeRight', 'swipeUp',
+    knockouch.ZeptoTouchEvents = ['swipe', 'swipeLeft', 'swipeRight', 'swipeUp',
                             'swipeDown', 'doubleTap', 'tap', 'singleTap', 'longTap']
 
-    var hammerOptions = ['doubletap_distance', 'doubletap_interval', 'drag',
+    knockouch.HammerOptions = ['doubletap_distance', 'doubletap_interval', 'drag',
                         'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
                         'drag_max_touches', 'drag_min_distance', 'hold',
                         'hold_threshold', 'hold_timeout', 'prevent_default',
@@ -46,30 +74,18 @@
                         'tap', 'tap_max_distance', 'tap_max_touchtime',
                         'touch', 'transform', 'transform_always_block',
                         'transform_min_rotation', 'transform_min_scale'];
+
     function init() {
-        var eventsList = [];
-        switch (knockouch.touchLibrary) {
-            case Hammer: {
-                eventsList = hammerTouchEvents;
-                touch = function (element, touchEventName, handler, options) {
-                    Hammer(element, options).on(touchEventName, handler);
-                }
-                break;
-            }
-            case Zepto: {
-                eventsList = zeptoTouchEvents;
-                touch = function (element, touchEventName, handler) {
-                    Zepto(element)[touchEventName](handler);
-                }
-                break;
-            }
-        }
-        for (i in eventsList) {
-            var eventName = eventsList[i];
+        var library = knockouch.touchLibrary;
+        knockouch.eventList = knockouch[knockouch.touchLibrary + "TouchEvents"];
+        knockouch.touch = knockouch[knockouch.touchLibrary + "Wrapper"];
+        for (i in knockouch.eventList) {
+            var eventName = knockouch.eventList[i];
             makeTouchHandlerShortcut(eventName);
         }
     };
 
     window.knockouch = knockouch;
+    searchTouchLibrary();
 
 }(this, ko, Hammer));
