@@ -76,8 +76,8 @@
 
     function init() {
         var library = knockouch.touchLibrary;
-        knockouch.eventList = knockouch[knockouch.touchLibrary + "TouchEvents"];
-        knockouch.touch = knockouch[knockouch.touchLibrary + "Wrapper"];
+        knockouch.eventList = knockouch[library + "TouchEvents"];
+        knockouch.touch = knockouch[library + "Wrapper"];
         for (i in knockouch.eventList) {
             var eventName = knockouch.eventList[i];
             makeTouchHandlerShortcut(eventName);
