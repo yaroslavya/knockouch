@@ -1,19 +1,23 @@
-﻿(function (ko, touch) {
+﻿(function (windows, ko, touch) {
+    var knockouch = function (lib, options) {
+        knockouch.options = options || {};
+    };
+
     function makeTouchHandlerShortcut(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
             init: function (element, valueAccessor, allBindingsAccessor) {
                 var handler = valueAccessor();
                 var allBindings = allBindingsAccessor();
-                var options = getOptions(allBindings);
+                var options = setMoreOptions(allBindings);
                 Hammer(element, options).on(touchEventName, handler);
             }
         };
     };
 
-    function getOptions(bindings) {
-        var options = {};
-        for (i in touchOptions) {
-            var optionName = touchOptions[i];
+    function setMoreOptions(bindings) {
+        var options = knockouch.options;
+        for (i in hammerOptions) {
+            var optionName = hammerOptions[i];
             if (bindings[optionName] !== undefined && bindings[optionName].constructor !== Function) {
                 options[optionName] = bindings[optionName];
             }
@@ -27,7 +31,7 @@
                        'transformend', 'swipe', 'swipeleft', 'swiperight',
                        'swipeup', 'swipedown', 'pinch', 'pinchin', 'pinchout'];
 
-    var touchOptions = ['doubletap_distance', 'doubletap_interval', 'drag',
+    var hammerOptions = ['doubletap_distance', 'doubletap_interval', 'drag',
                         'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
                         'drag_max_touches', 'drag_min_distance', 'hold',
                         'hold_threshold', 'hold_timeout', 'prevent_default',
@@ -42,4 +46,6 @@
         makeTouchHandlerShortcut(eventName);
     }
 
-}(ko, Hammer));
+    window.knockouch = knockouch;
+
+}(this, ko, Hammer));
