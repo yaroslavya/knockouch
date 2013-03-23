@@ -4,7 +4,9 @@
     <title></title>
     <!--TODO: also add hammer and make sure we are using cdn only if we have internet, otherwise degrading to local libraries-->
     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="../libs/zepto.js"></script>
     <script src="../libs/hammer.js"></script>
+    <script src="../libs/ZeptoTouch.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="../src/knockouch.js"></script>
     <style>
@@ -32,18 +34,20 @@
     </style>
 </head>
 <body>
-    <div class="container" data-bind="tap:tappy, hold:tappy, swipe:tappy, doubletap:tappy, drag:tappy">
+    <div class="container" data-bind="tap:tappy, doubletap:tappy, swipe:tappy, drag:tappy">
         <span class="scoreboard" data-bind="text:someText"></span>
     </div>
 </body>
 <script>
-    knockouch(Hammer, { swipe: false });
+    knockouch(Zepto, { swipe: false });
+
     var model = {
         someText: ko.observable('do something with'),
         tappy: function (e) {
             model.someText('you just ' + e.type + 'ed.');
         }
     };
+
     ko.applyBindings(model);
 </script>
 </html>

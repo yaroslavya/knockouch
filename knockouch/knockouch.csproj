@@ -60,6 +60,7 @@
     <Content Include="demo\knockouch-demo.html" />
     <Content Include="libs\hammer.js" />
     <Content Include="libs\zepto.js" />
+    <Content Include="libs\ZeptoTouch.js" />
     <Content Include="scripts\_reference.js" />
     <Content Include="libs\knockout-2.2.1.js" />
     <Content Include="src\knockouch.js" />
