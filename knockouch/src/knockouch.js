@@ -1,17 +1,14 @@
 ﻿(function (windows, ko) {
     var knockouch = function (lib, options) {
         knockouch.options = options || {};
-        selectTouchLibrary(lib);
+        knockouch.selectTouchLibrary(lib);
     };
 
     knockouch.touchlibrarys = ['Hammer', 'Zepto'];
-    knockouch.touchLibrary = {};
+    knockouch.touchLibrary = "";
     knockouch.touch = {};
-    knockouch.touchEvents = [];
     
-
-
-    function makeTouchHandlerShortcut(touchEventName) {
+    knockouch.makeTouchHandlerShortcut = function(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
             init: function (element, valueAccessor, allBindingsAccessor) {
                 var handler = valueAccessor();
@@ -21,22 +18,57 @@
         };
     };
 
-    function searchTouchLibrary() {
+    knockouch.searchTouchLibrary = function() {
         for (i in knockouch.touchlibrarys) {
             var touchLibary = knockouch.touchlibrarys[i];
             if (window[touchLibary] !== undefined) {
-                selectTouchLibrary(touchLibary);
+                knockouch.selectTouchLibrary(touchLibary);
                 break;
             }
         }
     };
 
-    function selectTouchLibrary(library) {
+    knockouch.selectTouchLibrary = function(library) {
         knockouch.touchLibrary = library;
-        init();
+        knockouch.init();
     };
 
-    function setMoreOptions(bindings) {
+    knockouch.init = function() {
+        var library = knockouch.touchLibrary;
+        knockouch.touch = knockouch[library + "Wrapper"];
+        for (i in knockouch.touchEvents) {
+            var eventName = knockouch.touchEvents[i];
+            knockouch.makeTouchHandlerShortcut(eventName);
+        }
+    };
+
+    knockouch.unifyEventName = function(eventName) {
+        if (knockouch.ZeptoReplacementEvents[eventName] !== undefined) {
+            return knockouch.ZeptoReplacementEvents[eventName];
+        }
+        else {
+            throw "you've selected touch library not support " + eventName + " event";
+        }
+    };
+
+    knockouch.touchEvents  = ['tap', 'doubletap', 'hold', 'rotate',
+                       'drag', 'dragleft', 'dragright', 'dragup',
+                       'dragdown', 'transform', 'transformstart',
+                       'transformend', 'swipe', 'swipeleft', 'swiperight',
+                       'swipeup', 'swipedown', 'pinch', 'pinchin', 'pinchout'];
+
+    //--------Hammer--------------
+    knockouch.hammerOptions = ['doubletap_distance', 'doubletap_interval', 'drag',
+                        'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
+                        'drag_max_touches', 'drag_min_distance', 'hold',
+                        'hold_threshold', 'hold_timeout', 'prevent_default',
+                        'release', 'show_touches', 'stop_browser_behavior',
+                        'swipe', 'swipe_max_touches', 'swipe_velocity',
+                        'tap', 'tap_max_distance', 'tap_max_touchtime',
+                        'touch', 'transform', 'transform_always_block',
+                        'transform_min_rotation', 'transform_min_scale'];
+
+    knockouch.setMoreOptions = function(bindings) {
         var options = knockouch.options;
         for (i in knockouch.hammerOptions) {
             var optionName = knockouch.hammerOptions[i];
@@ -47,40 +79,14 @@
         return options;
     };
 
-    function init() {
-        var library = knockouch.touchLibrary;
-        knockouch.touch = knockouch[library + "Wrapper"];
-        for (i in knockouch.touchEvents) {
-            var eventName = knockouch.touchEvents[i];
-            makeTouchHandlerShortcut(eventName);
-        }
-    };
-
-    function unifyEventName(eventName) {
-        if (knockouch.ZeptoReplacementEvents[eventName] !== undefined) {
-            return knockouch.ZeptoReplacementEvents[eventName];
-        }
-        else {
-            throw "you've selected touch library not support " + eventName + " event";
-        }
-    };
-
     knockouch.HammerWrapper = function (element, touchEventName, handler, bindings) {
-        var options = setMoreOptions(bindings);
+        var options = knockouch.setMoreOptions(bindings);
         Hammer(element, options).on(touchEventName, handler);
     };
 
-    knockouch.ZeptoWrapper = function (element, touchEventName, handler) {
-        touchEventName = unifyEventName(touchEventName);
-        Zepto(element)[touchEventName](handler);
-    };
+    //----------------------------
 
-    knockouch.touchEvents  = ['tap', 'doubletap', 'hold', 'rotate',
-                       'drag', 'dragleft', 'dragright', 'dragup',
-                       'dragdown', 'transform', 'transformstart',
-                       'transformend', 'swipe', 'swipeleft', 'swiperight',
-                       'swipeup', 'swipedown', 'pinch', 'pinchin', 'pinchout'];
-
+    //--------Zepto---------------
     knockouch.ZeptoReplacementEvents = {
         'swipeleft': 'swipeLeft',
         'swiperight': 'swipeRight',
@@ -92,18 +98,13 @@
         'swipe': 'swipe'
     };
 
-    knockouch.hammerOptions = ['doubletap_distance', 'doubletap_interval', 'drag',
-                        'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
-                        'drag_max_touches', 'drag_min_distance', 'hold',
-                        'hold_threshold', 'hold_timeout', 'prevent_default',
-                        'release', 'show_touches', 'stop_browser_behavior',
-                        'swipe', 'swipe_max_touches', 'swipe_velocity',
-                        'tap', 'tap_max_distance', 'tap_max_touchtime',
-                        'touch', 'transform', 'transform_always_block',
-                        'transform_min_rotation', 'transform_min_scale'];
+    knockouch.ZeptoWrapper = function (element, touchEventName, handler) {
+        touchEventName = knockouch.unifyEventName(touchEventName);
+        Zepto(element)[touchEventName](handler);
+    };
 
-
+    //----------------------------
     window.knockouch = knockouch;
-    searchTouchLibrary();
+    knockouch.searchTouchLibrary();
 
 }(this, ko));

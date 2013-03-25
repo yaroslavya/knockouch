@@ -34,12 +34,12 @@
     </style>
 </head>
 <body>
-    <div class="container" data-bind="tap:tappy, doubletap:tappy, swipe:tappy , swipeleft:tappy">
+    <div class="container" data-bind="tap:tappy, doubletap:tappy, swipe:tappy , swipeleft:tappy, swiperight:tappy, swipeup:tappy, swipedown:tappy, drag:tappy, touch:tappy">
         <span class="scoreboard" data-bind="text:someText"></span>
     </div>
 </body>
 <script>
-    knockouch("Zepto", { swipe: false });
+    knockouch("Hammer", { swipe: true });
 
     var model = {
         someText: ko.observable('do something with'),
