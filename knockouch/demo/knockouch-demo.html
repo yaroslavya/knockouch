@@ -34,12 +34,16 @@
     </style>
 </head>
 <body>
-    <div class="container" data-bind="tap:tappy, doubletap:tappy, swipe:tappy, drag:tappy">
+    <div class="container" data-bind="tap:tappy, doubletap:tappy, swipe:tappy , swipeleft:tappy">
         <span class="scoreboard" data-bind="text:someText"></span>
     </div>
 </body>
 <script>
+<<<<<<< HEAD
     knockouch("Hammer", { swipe: false });
+=======
+    knockouch("Zepto", { swipe: false });
+>>>>>>> add support for non hammer type events
 
     var model = {
         someText: ko.observable('do something with'),
