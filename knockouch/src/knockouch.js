@@ -4,7 +4,7 @@
         knockouch.selectTouchLibrary(library);
     };
 
-    knockouch.touchLibrary = {};
+    knockouch.touchLibrary = null;
     knockouch.touchLibraries = {};
     knockouch.touchEvents = ['tap', 'doubletap', 'hold', 'rotate',
                        'drag', 'dragleft', 'dragright', 'dragup',
@@ -29,6 +29,9 @@
                 knockouch.touchLibrary = touchLibary;
                 break;
             }
+        }
+        if (knockouch.touchLibrary === null) {
+            throw "can't fined suitable library";
         }
     };
 
@@ -61,9 +64,7 @@
     };
 
     knockouch.touchLibraries.Hammer = {
-        name: "Hammer",
         path: window.Hammer,
-        options :{},
         optionsList : ['doubletap_distance', 'doubletap_interval', 'drag',
                         'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
                         'drag_max_touches', 'drag_min_distance', 'hold',
@@ -74,11 +75,11 @@
                         'touch', 'transform', 'transform_always_block',
                         'transform_min_rotation', 'transform_min_scale'],
         setMoreOptions: function(bindings) {
-            var extendedOptions = this.options;
+            var extendedOptions = knockouch.options;
             for (i in this.optionsList) {
                 var optionName = this.optionsList[i];
                 if (bindings[optionName] !== undefined && bindings[optionName].constructor !== Function) {
-                    this.options[optionName] = bindings[optionName];
+                    knockouch.options[optionName] = bindings[optionName];
                 }
             }
             return extendedOptions;
@@ -90,7 +91,6 @@
     };
 
     knockouch.touchLibraries.jQueryMobile = {
-        name: "jQuery Mobile",
         path: window.jQuery.mobile,
         eventsRequiringReplacement: {
             'swipeleft': 'swipeLeft',
@@ -106,7 +106,6 @@
     };
 
     knockouch.touchLibraries.Zepto = {
-        name: "Zepto",
         path: window.Zepto,
         eventsRequiringReplacement: {
             'swipeleft': 'swipeLeft',
