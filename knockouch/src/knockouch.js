@@ -4,9 +4,11 @@
         knockouch.selectTouchLibrary(lib);
     };
 
-    knockouch.touchlibrarys = ['Hammer', 'Zepto'];
+    knockouch.touchlibrarys = ['Hammer', 'jQuery', 'Zepto'];
     knockouch.touchLibrary = "";
+    knockouch.replacementEvents = {};
     knockouch.touch = {};
+    
     
     knockouch.makeTouchHandlerShortcut = function(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
@@ -35,7 +37,8 @@
 
     knockouch.init = function() {
         var library = knockouch.touchLibrary;
-        knockouch.touch = knockouch[library + "Wrapper"];
+        knockouch.touch = knockouch[library + 'Wrapper'];
+        knockouch.replacementEvents = knockouch[library + 'ReplacementEvents'];
         for (i in knockouch.touchEvents) {
             var eventName = knockouch.touchEvents[i];
             knockouch.makeTouchHandlerShortcut(eventName);
@@ -43,11 +46,11 @@
     };
 
     knockouch.unifyEventName = function(eventName) {
-        if (knockouch.ZeptoReplacementEvents[eventName] !== undefined) {
-            return knockouch.ZeptoReplacementEvents[eventName];
+        if (knockouch.replacementEvents[eventName] !== undefined) {
+            return knockouch.replacementEvents[eventName];
         }
         else {
-            throw "you've selected touch library not support " + eventName + " event";
+            throw "you've selected touch library not support " + eventName + ' event';
         }
     };
 
@@ -84,6 +87,20 @@
         Hammer(element, options).on(touchEventName, handler);
     };
 
+    //----------------------------
+
+    //--------jQuery--------------
+    knockouch.jQueryReplacementEvents = {
+        'swipeleft': 'swipeLeft',
+        'swiperight': 'swipeRight',
+        'hold': 'taphold',
+        'tap': 'tap',
+        'swipe': 'swipe'
+    };
+
+    knockouch.jQueryWrapper = function (element, touchEventName, handler, bindings) {
+        jQuery(element).bind(touchEventName, handler);
+    };
     //----------------------------
 
     //--------Zepto---------------
