@@ -1,4 +1,4 @@
-﻿(function (windows, ko) {
+﻿(function (window, ko) {
     var knockouch = function (library, options) {
         knockouch.options = options || {};
         knockouch.selectTouchLibrary(library);
