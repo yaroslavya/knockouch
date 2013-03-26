@@ -42,14 +42,13 @@
 <script>
     
     
-    knockouch('jQuery');
+    knockouch('Hammer');
     var model = {
         someText: ko.observable('do something with'),
         tappy: function (e) {
             model.someText('you just ' + e.type + 'ed.');
         }
     };
-    jQuery
 
     ko.applyBindings(model);
 </script>
