@@ -25,13 +25,13 @@
     knockouch.searchTouchLibrary = function() {
         for (i in knockouch.touchLibraries) {
             var touchLibary = knockouch.touchLibraries[i];
-            if (touchLibary.path !== undefined) {
+            if (touchLibary.isLoad()) {
                 knockouch.touchLibrary = touchLibary;
                 break;
             }
         }
         if (knockouch.touchLibrary === null) {
-            throw "can't fined suitable library";
+            throw "could not find any touch library";
         }
     };
 
@@ -64,7 +64,11 @@
     };
 
     knockouch.touchLibraries.Hammer = {
-        path: window.Hammer,
+        isLoad: function () {
+            if (window.Hammer) {
+                return true;
+            }
+        },
         optionsList : ['doubletap_distance', 'doubletap_interval', 'drag',
                         'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
                         'drag_max_touches', 'drag_min_distance', 'hold',
@@ -91,7 +95,11 @@
     };
 
     knockouch.touchLibraries.jQueryMobile = {
-        path: window.jQuery.mobile,
+        isLoad: function () {
+            if (window.jQuery.mobile) {
+                return true;
+            }
+        },
         eventsRequiringReplacement: {
             'swipeleft': 'swipeLeft',
             'swiperight': 'swipeRight',
@@ -106,7 +114,11 @@
     };
 
     knockouch.touchLibraries.Zepto = {
-        path: window.Zepto,
+        isLoad: function () {
+            if (window.Zepto) {
+                return true;
+            }
+        },
         eventsRequiringReplacement: {
             'swipeleft': 'swipeLeft',
             'swiperight': 'swipeRight',
