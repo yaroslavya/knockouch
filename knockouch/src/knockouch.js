@@ -36,7 +36,7 @@
     };
 
     knockouch.selectTouchLibrary = function (library) {
-        if (knockouch.touchLibraries[library] !== undefined) {
+        if (knockouch.touchLibraries[library].isLoad()) {
             knockouch.touchLibrary = knockouch.touchLibraries[library];
         }
         else {
