@@ -24,9 +24,9 @@
 
     knockouch.searchTouchLibrary = function() {
         for (i in knockouch.touchLibraries) {
-            var touchLibary = knockouch.touchLibraries[i];
-            if (touchLibary.isLoad()) {
-                knockouch.touchLibrary = touchLibary;
+            var chosenLibrary = knockouch.touchLibraries[i];
+            if (chosenLibrary.isLoad()) {
+                knockouch.touchLibrary = chosenLibrary;
                 break;
             }
         }
