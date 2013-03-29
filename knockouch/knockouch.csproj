@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="demo\iphone.html" />
     <Content Include="demo\knockouch-demo.html" />
     <Content Include="libs\hammer.js" />
     <Content Include="libs\hammer.min.js" />

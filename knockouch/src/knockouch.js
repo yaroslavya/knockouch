@@ -1,10 +1,30 @@
 ﻿
 (function (ko, touch) {
+    function hammerWrapper() {
+        return Hammer;
+    };
+    
+    function zeptoWrapper() {
+        return {
+            
+        };
+    };
+    
+    function getDefaultWrapper() {
+        if (Hammer !== undefined){
+            return hammerWrapper();
+        }
+        
+        if (Zepto !== undefined) {
+            return zeptoWrapper();
+        }
+    };
+    
     function makeTouchHandlerShortcut(touchEventName) {        
         ko.bindingHandlers[touchEventName] = {
             init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
                 var handler = valueAccessor();
-                Hammer(element).on(touchEventName, handler);
+                touch(element).on(touchEventName, handler);
             }
         };
     };
