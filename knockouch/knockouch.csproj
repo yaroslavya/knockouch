@@ -57,6 +57,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="demo\css\iphone.css">
+      <DependentUpon>iphone.less</DependentUpon>
+    </Content>
+    <Content Include="demo\css\iphone.min.css">
+      <DependentUpon>iphone.less</DependentUpon>
+    </Content>
+    <Content Include="demo\css\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="demo\css\variables.min.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
     <Content Include="demo\iphone.html" />
     <Content Include="demo\knockouch-demo.html" />
     <Content Include="libs\hammer.js" />
@@ -64,12 +76,19 @@
     <Content Include="libs\knockout-2.2.1.js" />
     <Content Include="scripts\_reference.js" />
     <Content Include="src\knockouch.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="demo\css\mixins.less" />
+    <Content Include="demo\css\variables.less" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="demo\css\iphone.less" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

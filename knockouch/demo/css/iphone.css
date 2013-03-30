@@ -1,381 +1,372 @@
-﻿ html, body {
-            height: 100%;
-        }
-
-        body {
-            text-align: center;
-            padding: 50px;
-            background: #cccccc;
-        }
-
-        .iphone {
-            display: -moz-inline-stack;
-            display: inline-block;
-            vertical-align: middle;
-            *vertical-align: auto;
-            zoom: 1;
-            *display: inline;
-        }
-
-        .iphone {
-            position: relative;
-        }
-        .iphone:after {
-            position: absolute;
-            top: 100%;
-            width: 372px;
-            height: 372px;
-            -webkit-border-radius: 50%;
-            -moz-border-radius: 50%;
-            -ms-border-radius: 50%;
-            -o-border-radius: 50%;
-            border-radius: 50%;
-            background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, #000000), color-stop(100%, rgba(0, 0, 0, 0)));
-            background: -webkit-radial-gradient(#000000, rgba(0, 0, 0, 0));
-            background: -moz-radial-gradient(#000000, rgba(0, 0, 0, 0));
-            background: -o-radial-gradient(#000000, rgba(0, 0, 0, 0));
-            background: radial-gradient(#000000, rgba(0, 0, 0, 0));
-            -webkit-transform: scale(1, 0.025);
-            -moz-transform: scale(1, 0.025);
-            -ms-transform: scale(1, 0.025);
-            -o-transform: scale(1, 0.025);
-            transform: scale(1, 0.025);
-            -webkit-transform-origin: 0 0;
-            -moz-transform-origin: 0 0;
-            -ms-transform-origin: 0 0;
-            -o-transform-origin: 0 0;
-            transform-origin: 0 0;
-            content: "";
-        }
-        .iphone .reflection {
-            position: absolute;
-            top: 100%;
-            -webkit-transform: scaleY(-1);
-            -moz-transform: scaleY(-1);
-            -ms-transform: scaleY(-1);
-            -o-transform: scaleY(-1);
-            transform: scaleY(-1);
-            -webkit-mask-image: -webkit-linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
-            -box-mask-image: -moz-linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
-            -o-mask-image: -o-linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
-            mask-image: linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
-            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-            opacity: 0.5;
-        }
-        .iphone .steel_band {
-            position: relative;
-            width: 372px;
-            height: 734px;
-            padding: 3px;
-            background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #dcdbda), color-stop(100%, #ebeae9));
-            background: -webkit-linear-gradient(left, #dcdbda, #ebeae9);
-            background: -moz-linear-gradient(left, #dcdbda, #ebeae9);
-            background: -o-linear-gradient(left, #dcdbda, #ebeae9);
-            background: linear-gradient(left, #dcdbda, #ebeae9);
-            -webkit-border-radius: 60px;
-            -moz-border-radius: 60px;
-            -ms-border-radius: 60px;
-            -o-border-radius: 60px;
-            border-radius: 60px;
-            -webkit-box-shadow: inset 1px 0 0 #7e7c7a, inset -1px 0 1px #7e7c7a;
-            -moz-box-shadow: inset 1px 0 0 #7e7c7a, inset -1px 0 1px #7e7c7a;
-            box-shadow: inset 1px 0 0 #7e7c7a, inset -1px 0 1px #7e7c7a;
-        }
-        .iphone .plastic_band {
-            width: 364px;
-            height: 726px;
-            padding: 4px;
-            -webkit-border-radius: 57px;
-            -moz-border-radius: 57px;
-            -ms-border-radius: 57px;
-            -o-border-radius: 57px;
-            border-radius: 57px;
-            background: #2b2b2b;
-            -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
-            box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
-        }
-        .iphone .glass_face {
-            position: relative;
-            width: 364px;
-            height: 726px;
-            overflow: hidden;
-            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #090909));
-            background: -webkit-linear-gradient(#000000, #090909);
-            background: -moz-linear-gradient(#000000, #090909);
-            background: -o-linear-gradient(#000000, #090909);
-            background: linear-gradient(#000000, #090909);
-            -webkit-border-radius: 53px;
-            -moz-border-radius: 53px;
-            -ms-border-radius: 53px;
-            -o-border-radius: 53px;
-            border-radius: 53px;
-            -webkit-box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.5);
-            box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.5);
-        }
-        .iphone .gloss {
-            position: relative;
-            z-index: 1;
-            height: 100%;
-            width: 100%;
-            -webkit-mask-image: -webkit-linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
-            -box-mask-image: -moz-linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
-            -o-mask-image: -o-linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
-            mask-image: linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
-            -webkit-border-radius: 53px;
-            -moz-border-radius: 53px;
-            -ms-border-radius: 53px;
-            -o-border-radius: 53px;
-            border-radius: 53px;
-            background: -webkit-linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
-            background: -moz-linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
-            background: -o-linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
-            background: linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
-            -webkit-background-size: 60% 100%;
-            -moz-background-size: 60% 100%;
-            -o-background-size: 60% 100%;
-            background-size: 60% 100%;
-            background-position: top right;
-        }
-        .iphone .camera {
-            position: absolute;
-            z-index: 2;
-            top: 50px;
-            left: 50%;
-            margin-left: -75px;
-            height: 8px;
-            width: 8px;
-            padding: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            -webkit-border-radius: 9px;
-            -moz-border-radius: 9px;
-            -ms-border-radius: 9px;
-            -o-border-radius: 9px;
-            border-radius: 9px;
-            -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
-            -moz-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
-            box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
-            background: -webkit-gradient(radial, 5px 5px, 0, 5px 5px, 100, color-stop(0%, #1b1b1b), color-stop(100%, #343434));
-            background: -webkit-radial-gradient(5px 5px, #1b1b1b, #343434);
-            background: -moz-radial-gradient(5px 5px, #1b1b1b, #343434);
-            background: -o-radial-gradient(5px 5px, #1b1b1b, #343434);
-            background: radial-gradient(5px 5px, #1b1b1b, #343434);
-            background-position: top left;
-        }
-        .iphone .camera:after {
-            display: block;
-            height: 8px;
-            width: 8px;
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            -ms-border-radius: 4px;
-            -o-border-radius: 4px;
-            border-radius: 4px;
-            -webkit-box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
-            -moz-box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
-            box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
-            background: -webkit-gradient(radial, 1px 1px, 0, 1px 1px, 50, color-stop(25%, #3c2b90), color-stop(50%, rgba(60, 43, 144, 0.75))), -webkit-gradient(radial, 1px 1px, 0, 1px 1px, 50, color-stop(25%, rgba(43, 93, 144, 0.75)), color-stop(50%, rgba(43, 93, 144, 0))), -webkit-gradient(radial, 1px 1px, 0, 1px 1px, 50, color-stop(25%, rgba(43, 93, 144, 0.75)), color-stop(50%, rgba(43, 93, 144, 0))), -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 60, color-stop(40%, #07131b), color-stop(60%, #1b3d70));
-            background: -webkit-radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), -webkit-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -webkit-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -webkit-radial-gradient(#07131b 40%, #1b3d70 60%);
-            background: -moz-radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), -moz-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -moz-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -moz-radial-gradient(#07131b 40%, #1b3d70 60%);
-            background: -o-radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), -o-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -o-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -o-radial-gradient(#07131b 40%, #1b3d70 60%);
-            background: radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), radial-gradient(#07131b 40%, #1b3d70 60%);
-            background-position: top left, center left, center, right center;
-            content: "";
-        }
-        .iphone .speaker {
-            position: absolute;
-            z-index: 2;
-            top: 50px;
-            left: 50%;
-            margin-left: -37px;
-            width: 62px;
-            height: 8px;
-            padding: 5px;
-            -webkit-border-radius: 9px;
-            -moz-border-radius: 9px;
-            -ms-border-radius: 9px;
-            -o-border-radius: 9px;
-            border-radius: 9px;
-            background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, rgba(255, 255, 255, 0.35)), color-stop(100%, rgba(255, 255, 255, 0))) no-repeat, -webkit-gradient(linear, 50% 0%, 50% 18, color-stop(44.44444%, #000000), color-stop(100%, #444444));
-            background: -webkit-radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, -webkit-linear-gradient(#000000 8px, #444444 18px);
-            background: -moz-radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, -moz-linear-gradient(#000000 8px, #444444 18px);
-            background: -o-radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, -o-linear-gradient(#000000 8px, #444444 18px);
-            background: radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, linear-gradient(#000000 8px, #444444 18px);
-            -webkit-background-size: 10px 10px, 100% 100%;
-            -moz-background-size: 10px 10px, 100% 100%;
-            -o-background-size: 10px 10px, 100% 100%;
-            background-size: 10px 10px, 100% 100%;
-            background-position: bottom right, center;
-        }
-        .iphone .speaker:after {
-            display: block;
-            width: 62px;
-            height: 8px;
-            -webkit-border-radius: 6px;
-            -moz-border-radius: 6px;
-            -ms-border-radius: 6px;
-            -o-border-radius: 6px;
-            border-radius: 6px;
-            background: -webkit-linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
-            background: -moz-linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
-            background: -o-linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
-            background: linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
-            -webkit-background-size: 2px 2px;
-            -moz-background-size: 2px 2px;
-            -o-background-size: 2px 2px;
-            background-size: 2px 2px;
-            -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.5);
-            box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.5);
-            content: "";
-        }
-        .iphone .home_button {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            margin-left: -35px;
-            height: 70px;
-            width: 70px;
-            -webkit-border-radius: 35px;
-            -moz-border-radius: 35px;
-            -ms-border-radius: 35px;
-            -o-border-radius: 35px;
-            border-radius: 35px;
-            background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #444444), color-stop(60%, #000000));
-            background: -webkit-linear-gradient(left, #444444, #000000 60%);
-            background: -moz-linear-gradient(left, #444444, #000000 60%);
-            background: -o-linear-gradient(left, #444444, #000000 60%);
-            background: linear-gradient(left, #444444, #000000 60%);
-            border: 1px solid black;
-            -webkit-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
-            box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        .iphone .home_button:after {
-            position: absolute;
-            top: 23px;
-            left: 23px;
-            right: 23px;
-            bottom: 23px;
-            border: 2px solid #888888;
-            -webkit-box-shadow: inset 0 0 1px black, 0 0 1px black;
-            -moz-box-shadow: inset 0 0 1px black, 0 0 1px black;
-            box-shadow: inset 0 0 1px black, 0 0 1px black;
-            -webkit-border-radius: 6px;
-            -moz-border-radius: 6px;
-            -ms-border-radius: 6px;
-            -o-border-radius: 6px;
-            border-radius: 6px;
-            content: "";
-        }
-        .iphone .screen {
-            position: absolute;
-            top: 120px;
-            left: 50%;
-            margin-left: -166px;
-            width: 320px;
-            height: 480px;
-            padding: 5px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -ms-border-radius: 5px;
-            -o-border-radius: 5px;
-            border-radius: 5px;
-            background: #0a0a0a;
-        }
-        .iphone .stage {
-            width: 320px;
-            height: 480px;
-            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #222222), color-stop(100%, #111111));
-            background: -webkit-linear-gradient(#222222, #111111);
-            background: -moz-linear-gradient(#222222, #111111);
-            background: -o-linear-gradient(#222222, #111111);
-            background: linear-gradient(#222222, #111111);
-        }
-        .iphone .mute_rocker {
-            position: absolute;
-            top: 90px;
-            right: 100%;
-            width: 2px;
-            height: 32px;
-            border: 1px solid #888888;
-            border-right: none;
-            -moz-border-radius-topleft: 2px;
-            -webkit-border-top-left-radius: 2px;
-            border-top-left-radius: 2px;
-            -moz-border-radius-bottomleft: 2px;
-            -webkit-border-bottom-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #fbfbfb), color-stop(5%, #dbdbdb), color-stop(50%, #dbdbdb), color-stop(75%, #aeaeae), color-stop(90%, #fbfbfb));
-            background: -webkit-linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
-            background: -moz-linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
-            background: -o-linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
-            background: linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
-        }
-        .iphone .volume {
-            position: absolute;
-            right: 100%;
-            width: 2px;
-            height: 25px;
-            border: 1px solid #888888;
-            border-right: none;
-            -moz-border-radius-topleft: 2px;
-            -webkit-border-top-left-radius: 2px;
-            border-top-left-radius: 2px;
-            -moz-border-radius-bottomleft: 2px;
-            -webkit-border-bottom-left-radius: 2px;
-            border-bottom-left-radius: 2px;
-            background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dbdbdb), color-stop(15%, #eeeeee), color-stop(75%, #333333), color-stop(90%, #fbfbfb));
-            background: -webkit-linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
-            background: -moz-linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
-            background: -o-linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
-            background: linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
-        }
-        .iphone .volume.up {
-            top: 160px;
-        }
-        .iphone .volume.down {
-            top: 222px;
-        }
-        .iphone .sleep_wake {
-            position: absolute;
-            bottom: 100%;
-            right: 70px;
-            width: 60px;
-            height: 3px;
-            border: 1px solid #888888;
-            border-bottom: none;
-            -moz-border-radius-topleft: 2px;
-            -webkit-border-top-left-radius: 2px;
-            border-top-left-radius: 2px;
-            -moz-border-radius-topright: 2px;
-            -webkit-border-top-right-radius: 2px;
-            border-top-right-radius: 2px;
-            background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #aaaaaa), color-stop(7%, #ffffff), color-stop(15%, #aaaaaa), color-stop(70%, #dddddd), color-stop(85%, #bbbbbb), color-stop(93%, #eeeeee), color-stop(100%, #aaaaaa));
-            background: -webkit-linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
-            background: -moz-linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
-            background: -o-linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
-            background: linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
-        }
-
-        .icon {
-            height: 50px;
-            width: 50px;
-
-            display: inline-block;
-             -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            -ms-border-radius: 10px;
-            -o-border-radius: 10px;
-            border-radius: 10px;
-            background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #444444), color-stop(60%, #000000));
-            background: -webkit-linear-gradient(left, #444444, #000000 60%);
-            background: -moz-linear-gradient(left, #444444, #000000 60%);
-            background: -o-linear-gradient(left, #444444, #000000 60%);
-            background: linear-gradient(left, #444444, #000000 60%);
-            border: 1px solid black;
-            -webkit-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
-            -moz-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
-            box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+﻿html,
+body {
+  height: 100%;
+}
+body {
+  text-align: center;
+  padding: 50px;
+  background: #cccccc;
+}
+.iphone {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  position: relative;
+}
+.iphone:after {
+  position: absolute;
+  top: 100%;
+  width: 372px;
+  height: 372px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, #000000), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -webkit-radial-gradient(#000000, rgba(0, 0, 0, 0));
+  background: -moz-radial-gradient(#000000, rgba(0, 0, 0, 0));
+  background: -o-radial-gradient(#000000, rgba(0, 0, 0, 0));
+  background: radial-gradient(#000000, rgba(0, 0, 0, 0));
+  -webkit-transform: scale(1, 0.025);
+  -moz-transform: scale(1, 0.025);
+  -ms-transform: scale(1, 0.025);
+  -o-transform: scale(1, 0.025);
+  transform: scale(1, 0.025);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+  content: "";
+}
+.iphone .reflection {
+  position: absolute;
+  top: 100%;
+  -webkit-transform: scaleY(-1);
+  -moz-transform: scaleY(-1);
+  -ms-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  transform: scaleY(-1);
+  -webkit-mask-image: -webkit-linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
+  -box-mask-image: -moz-linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
+  -o-mask-image: -o-linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
+  mask-image: linear-gradient(rgba(0, 0, 0, 0) 80%, #000000);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+.iphone .steel_band {
+  position: relative;
+  width: 372px;
+  height: 734px;
+  padding: 3px;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #dcdbda), color-stop(100%, #ebeae9));
+  background: -webkit-linear-gradient(left, #dcdbda, #ebeae9);
+  background: -moz-linear-gradient(left, #dcdbda, #ebeae9);
+  background: -o-linear-gradient(left, #dcdbda, #ebeae9);
+  background: linear-gradient(left, #dcdbda, #ebeae9);
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  -ms-border-radius: 60px;
+  -o-border-radius: 60px;
+  border-radius: 60px;
+  -webkit-box-shadow: inset 1px 0 0 #7e7c7a, inset -1px 0 1px #7e7c7a;
+  -moz-box-shadow: inset 1px 0 0 #7e7c7a, inset -1px 0 1px #7e7c7a;
+  box-shadow: inset 1px 0 0 #7e7c7a, inset -1px 0 1px #7e7c7a;
+}
+.iphone .plastic_band {
+  width: 364px;
+  height: 726px;
+  padding: 4px;
+  -webkit-border-radius: 57px;
+  -moz-border-radius: 57px;
+  -ms-border-radius: 57px;
+  -o-border-radius: 57px;
+  border-radius: 57px;
+  background: #2b2b2b;
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.iphone .glass_face {
+  position: relative;
+  width: 364px;
+  height: 726px;
+  overflow: hidden;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #000000), color-stop(100%, #090909));
+  background: -webkit-linear-gradient(#000000, #090909);
+  background: -moz-linear-gradient(#000000, #090909);
+  background: -o-linear-gradient(#000000, #090909);
+  background: linear-gradient(#000000, #090909);
+  -webkit-border-radius: 53px;
+  -moz-border-radius: 53px;
+  -ms-border-radius: 53px;
+  -o-border-radius: 53px;
+  border-radius: 53px;
+  -webkit-box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.5);
+}
+.iphone .gloss {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  -webkit-mask-image: -webkit-linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
+  -box-mask-image: -moz-linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
+  -o-mask-image: -o-linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
+  mask-image: linear-gradient(-162deg, #000000 32%, rgba(0, 0, 0, 0) 32%);
+  -webkit-border-radius: 53px;
+  -moz-border-radius: 53px;
+  -ms-border-radius: 53px;
+  -o-border-radius: 53px;
+  border-radius: 53px;
+  background: -webkit-linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
+  background: -moz-linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
+  background: -o-linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
+  background: linear-gradient(280deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 70%) no-repeat;
+  -webkit-background-size: 60% 100%;
+  -moz-background-size: 60% 100%;
+  -o-background-size: 60% 100%;
+  background-size: 60% 100%;
+  background-position: top right;
+}
+.iphone .camera {
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  left: 50%;
+  margin-left: -75px;
+  height: 8px;
+  width: 8px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  border-radius: 9px;
+  -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.25);
+  background: -webkit-gradient(radial, 5px 5px, 0, 5px 5px, 100, color-stop(0%, #1b1b1b), color-stop(100%, #343434));
+  background: -webkit-radial-gradient(5px 5px, #1b1b1b, #343434);
+  background: -moz-radial-gradient(5px 5px, #1b1b1b, #343434);
+  background: -o-radial-gradient(5px 5px, #1b1b1b, #343434);
+  background: radial-gradient(5px 5px, #1b1b1b, #343434);
+  background-position: top left;
+}
+.iphone .camera:after {
+  display: block;
+  height: 8px;
+  width: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+  background: -webkit-gradient(radial, 1px 1px, 0, 1px 1px, 50, color-stop(25%, #3c2b90), color-stop(50%, rgba(60, 43, 144, 0.75))), -webkit-gradient(radial, 1px 1px, 0, 1px 1px, 50, color-stop(25%, rgba(43, 93, 144, 0.75)), color-stop(50%, rgba(43, 93, 144, 0))), -webkit-gradient(radial, 1px 1px, 0, 1px 1px, 50, color-stop(25%, rgba(43, 93, 144, 0.75)), color-stop(50%, rgba(43, 93, 144, 0))), -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 60, color-stop(40%, #07131b), color-stop(60%, #1b3d70));
+  background: -webkit-radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), -webkit-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -webkit-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -webkit-radial-gradient(#07131b 40%, #1b3d70 60%);
+  background: -moz-radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), -moz-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -moz-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -moz-radial-gradient(#07131b 40%, #1b3d70 60%);
+  background: -o-radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), -o-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -o-radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), -o-radial-gradient(#07131b 40%, #1b3d70 60%);
+  background: radial-gradient(1px 1px, #3c2b90 25%, rgba(60, 43, 144, 0.75) 50%), radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), radial-gradient(1px 1px, rgba(43, 93, 144, 0.75) 25%, rgba(43, 93, 144, 0) 50%), radial-gradient(#07131b 40%, #1b3d70 60%);
+  background-position: top left, center left, center, right center;
+  content: "";
+}
+.iphone .speaker {
+  position: absolute;
+  z-index: 2;
+  top: 50px;
+  left: 50%;
+  margin-left: -37px;
+  width: 62px;
+  height: 8px;
+  padding: 5px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  border-radius: 9px;
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, color-stop(0%, rgba(255, 255, 255, 0.35)), color-stop(100%, rgba(255, 255, 255, 0))) no-repeat, -webkit-gradient(linear, 50% 0%, 50% 18, color-stop(44.44444%, #000000), color-stop(100%, #444444));
+  background: -webkit-radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, -webkit-linear-gradient(#000000 8px, #444444 18px);
+  background: -moz-radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, -moz-linear-gradient(#000000 8px, #444444 18px);
+  background: -o-radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, -o-linear-gradient(#000000 8px, #444444 18px);
+  background: radial-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0)) no-repeat, linear-gradient(#000000 8px, #444444 18px);
+  -webkit-background-size: 10px 10px, 100% 100%;
+  -moz-background-size: 10px 10px, 100% 100%;
+  -o-background-size: 10px 10px, 100% 100%;
+  background-size: 10px 10px, 100% 100%;
+  background-position: bottom right, center;
+}
+.iphone .speaker:after {
+  display: block;
+  width: 62px;
+  height: 8px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  background: -webkit-linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
+  background: -moz-linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
+  background: -o-linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
+  background: linear-gradient(45deg, #000000 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 75%, #000000 75%, #000000), #888888;
+  -webkit-background-size: 2px 2px;
+  -moz-background-size: 2px 2px;
+  -o-background-size: 2px 2px;
+  background-size: 2px 2px;
+  -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.5);
+  content: "";
+}
+.iphone .home_button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -35px;
+  height: 70px;
+  width: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  -ms-border-radius: 35px;
+  -o-border-radius: 35px;
+  border-radius: 35px;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #444444), color-stop(60%, #000000));
+  background: -webkit-linear-gradient(left, #444444, #000000 60%);
+  background: -moz-linear-gradient(left, #444444, #000000 60%);
+  background: -o-linear-gradient(left, #444444, #000000 60%);
+  background: linear-gradient(left, #444444, #000000 60%);
+  border: 1px solid black;
+  -webkit-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.iphone .home_button:after {
+  position: absolute;
+  top: 23px;
+  left: 23px;
+  right: 23px;
+  bottom: 23px;
+  border: 2px solid #888888;
+  -webkit-box-shadow: inset 0 0 1px black, 0 0 1px black;
+  -moz-box-shadow: inset 0 0 1px black, 0 0 1px black;
+  box-shadow: inset 0 0 1px black, 0 0 1px black;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  content: "";
+}
+.iphone .screen {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  margin-left: -166px;
+  width: 320px;
+  height: 480px;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #0a0a0a;
+}
+.iphone .stage {
+  width: 320px;
+  height: 480px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #222222), color-stop(100%, #111111));
+  background: -webkit-linear-gradient(#222222, #111111);
+  background: -moz-linear-gradient(#222222, #111111);
+  background: -o-linear-gradient(#222222, #111111);
+  background: linear-gradient(#222222, #111111);
+}
+.iphone .mute_rocker {
+  position: absolute;
+  top: 90px;
+  right: 100%;
+  width: 2px;
+  height: 32px;
+  border: 1px solid #888888;
+  border-right: none;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #fbfbfb), color-stop(5%, #dbdbdb), color-stop(50%, #dbdbdb), color-stop(75%, #aeaeae), color-stop(90%, #fbfbfb));
+  background: -webkit-linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
+  background: -moz-linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
+  background: -o-linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
+  background: linear-gradient(#fbfbfb 5%, #dbdbdb 5%, #dbdbdb 50%, #aeaeae 75%, #fbfbfb 90%);
+}
+.iphone .volume {
+  position: absolute;
+  right: 100%;
+  width: 2px;
+  height: 25px;
+  border: 1px solid #888888;
+  border-right: none;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dbdbdb), color-stop(15%, #eeeeee), color-stop(75%, #333333), color-stop(90%, #fbfbfb));
+  background: -webkit-linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
+  background: -moz-linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
+  background: -o-linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
+  background: linear-gradient(#dbdbdb, #eeeeee 15%, #333333 75%, #fbfbfb 90%);
+}
+.iphone .volume.up {
+  top: 160px;
+}
+.iphone .volume.down {
+  top: 222px;
+}
+.iphone .sleep_wake {
+  position: absolute;
+  bottom: 100%;
+  right: 70px;
+  width: 60px;
+  height: 3px;
+  border: 1px solid #888888;
+  border-bottom: none;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  -webkit-border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #aaaaaa), color-stop(7%, #ffffff), color-stop(15%, #aaaaaa), color-stop(70%, #dddddd), color-stop(85%, #bbbbbb), color-stop(93%, #eeeeee), color-stop(100%, #aaaaaa));
+  background: -webkit-linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
+  background: -moz-linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
+  background: -o-linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
+  background: linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
+}
+.icon {
+  height: 70px;
+  width: 70px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  -ms-border-radius: 35px;
+  -o-border-radius: 35px;
+  border-radius: 35px;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #444444), color-stop(60%, #000000));
+  background: -webkit-linear-gradient(left, #444444, #000000 60%);
+  background: -moz-linear-gradient(left, #444444, #000000 60%);
+  background: -o-linear-gradient(left, #444444, #000000 60%);
+  background: linear-gradient(left, #444444, #000000 60%);
+  border: 1px solid black;
+  
+}
