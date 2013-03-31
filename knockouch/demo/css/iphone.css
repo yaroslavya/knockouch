@@ -355,18 +355,21 @@ body {
   background: linear-gradient(left, #aaaaaa, #ffffff 7%, #aaaaaa 15%, #dddddd 70%, #bbbbbb 85%, #eeeeee 93%, #aaaaaa);
 }
 .icon {
-  height: 70px;
-  width: 70px;
-  -webkit-border-radius: 35px;
-  -moz-border-radius: 35px;
-  -ms-border-radius: 35px;
-  -o-border-radius: 35px;
-  border-radius: 35px;
+  display: inline-block;
+  height: 55px;
+  width: 55px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
   background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #444444), color-stop(60%, #000000));
   background: -webkit-linear-gradient(left, #444444, #000000 60%);
   background: -moz-linear-gradient(left, #444444, #000000 60%);
   background: -o-linear-gradient(left, #444444, #000000 60%);
   background: linear-gradient(left, #444444, #000000 60%);
   border: 1px solid black;
-  
+  -webkit-box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
 }

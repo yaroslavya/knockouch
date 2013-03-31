@@ -7,7 +7,14 @@
 }
 
 .box-shadow(@shadow){
-    -webkit-box-shadow: @shadow;
+  -webkit-box-shadow: @shadow;
   -moz-box-shadow: @shadow;
   box-shadow: @shadow;
+}
+
+.linear-gradient(@side:left, @colorStart:#444, @colorEnd:#000 60%){
+  background: -webkit-linear-gradient(@side, @colorStart, @colorEnd);
+  background: -moz-linear-gradient(@side, @colorStart, @colorEnd);
+  background: -o-linear-gradient(@side, @colorStart, @colorEnd);
+  background: linear-gradient(@side, @colorStart, @colorEnd);
 }
