@@ -248,6 +248,17 @@ body {
   -moz-box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 1px 1px #222222, inset 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+.iphone .home_button:active {
+  height: 68px;
+  width: 68px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50px;
+  border: 2px solid black;
+  -webkit-transform-origin-y: 2px;
+}
 .iphone .home_button:after {
   position: absolute;
   top: 23px;
@@ -356,8 +367,9 @@ body {
 }
 .icon {
   display: inline-block;
-  height: 55px;
-  width: 55px;
+  height: 56px;
+  width: 56px;
+  margin: 0 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -372,4 +384,46 @@ body {
   -webkit-box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+@-webkit-keyframes spaceboots {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(-4deg);
+  }
+  20% {
+    -webkit-transform: rotate(4deg);
+  }
+  30% {
+    -webkit-transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(4deg);
+  }
+  50% {
+    -webkit-transform: rotate(-4deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+  }
+  70% {
+    -webkit-transform: rotate(-4deg);
+  }
+  80% {
+    -webkit-transform: rotate(4deg);
+  }
+  90% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-4deg);
+  }
+}
+.shake {
+  -webkit-animation-name: spaceboots;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }

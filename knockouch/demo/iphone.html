@@ -3,6 +3,10 @@
 <head>
     <title></title>
     <link href="css/iphone.css" rel="stylesheet" />
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="../libs/hammer.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../src/knockouch.js"></script>    
 </head>
 <body>
     <div class='iphone'>
@@ -15,15 +19,65 @@
                 <div class='glass_face'>
                     <div class='camera'></div>
                     <div class='speaker'></div>
-                    <div class='home_button'></div>
-                    <div class='screen'>
-                        <div class='stage'>
-                            <span class="icon"></span><span class="icon"></span><span class="icon"></span><span class="icon"></span>
+                    <div class='home_button' data-bind="tap:cancel"></div>
+                    <div class='screen' data-bind="swipeleft:prev, swiperight:next">
+                        <div class='stage' data-bind="foreach: icons">
+                            <span data-bind="css: name, hold: $root.holdIcons" ></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function Icon(name, text) {
+            this.name = ko.observable(name || 'icon');
+            this.text = text || 'test';
+        }
+
+        var iPhone = (function() {
+            var isHolding = ko.observable(false);
+            var icons = ko.observableArray([new Icon(), new Icon(), new Icon()]);
+            function holdIcons() {
+                //TODO: set every icon class to holded. we can also make it for some top level container.
+                isHolding(!isHolding());
+                var iconsArr = icons();
+                for (var i = 0; i < iconsArr.length; i++) {
+                    var iconClass = isHolding() ? 'icon shake' : 'icon';
+                    iconsArr[i].name(iconClass);
+                }
+                
+                icons(iconsArr);                
+            };
+            
+            function cancel() {
+                if (isHolding()) {
+                    holdIcons();//hold once again to cancel hold.
+                }
+            };
+            
+            function next() {
+                //TODO: switch to the next page if any.
+                alert('next page');
+            }
+
+            function prev() {
+                //TODO: switch to the previous page if any.
+                alert('prev page');
+
+            }
+
+            return {
+                isHolding: isHolding,
+                icons: icons,
+                holdIcons: holdIcons,
+                cancel: cancel,
+                next:next,
+                prev:prev
+            };
+        }());
+        
+        ko.applyBindings(iPhone);
+    </script>
 </body>
 </html>

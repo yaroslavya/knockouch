@@ -63,6 +63,12 @@
     <Content Include="demo\css\iphone.min.css">
       <DependentUpon>iphone.less</DependentUpon>
     </Content>
+    <Content Include="demo\css\mixins.css">
+      <DependentUpon>mixins.less</DependentUpon>
+    </Content>
+    <Content Include="demo\css\mixins.min.css">
+      <DependentUpon>mixins.less</DependentUpon>
+    </Content>
     <Content Include="demo\css\variables.css">
       <DependentUpon>variables.less</DependentUpon>
     </Content>
@@ -71,6 +77,7 @@
     </Content>
     <Content Include="demo\iphone.html" />
     <Content Include="demo\knockouch-demo.html" />
+    <Content Include="demo\test.html" />
     <Content Include="libs\hammer.js" />
     <Content Include="libs\hammer.min.js" />
     <Content Include="libs\knockout-2.2.1.js" />
