@@ -57,6 +57,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="demo\css\animate.css" />
+    <Content Include="demo\css\animations.css">
+      <DependentUpon>animations.less</DependentUpon>
+    </Content>
+    <Content Include="demo\css\animations.min.css">
+      <DependentUpon>animations.less</DependentUpon>
+    </Content>
     <Content Include="demo\css\iphone.css">
       <DependentUpon>iphone.less</DependentUpon>
     </Content>
@@ -95,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="demo\css\iphone.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="demo\css\animations.less" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

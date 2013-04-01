@@ -381,7 +381,6 @@ body {
 }
 .iphone .stage {
   z-index: 100;
-  position: relative;
   width: 320px;
   height: 480px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #222222), color-stop(100%, #111111));
@@ -476,12 +475,23 @@ body {
   -moz-box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+.cut-wrapper {
+  position: absolute;
+  top: 140px;
+  left: 25px;
+  width: 320px;
+  height: 400px;
+  z-index: 10000;
+  overflow: hidden;
+}
 .screen-slides {
-  width: 980px;
+  left: 0;
+  width: 969px;
   height: 480px;
 }
 .screen-slide {
-  display: inline-block;
+  display: block;
+  float: left;
   width: 320px;
   height: 480px;
 }

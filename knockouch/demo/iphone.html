@@ -3,7 +3,6 @@
 <head>
     <title></title>
     <link href="css/iphone.css" rel="stylesheet" />
-    <link href="css/animate.css" rel="stylesheet" />
 
     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
     <script src="../libs/hammer.js"></script>
@@ -12,6 +11,13 @@
 </head>
 <body>
     <div class='iphone'>
+        <div class="cut-wrapper">
+            <div class="screen-slides" data-bind="swipeleft: prev, swiperight: next, foreach: screens" >
+                <span class="screen-slide" data-bind="foreach: $root.icons">
+                    <span data-bind="css: name, hold: $root.holdIcons" ></span>
+                </span>
+            </div>
+        </div>
         <div class='steel_band'>
             <div class='mute_rocker'></div>
             <div class='volume up'></div>
@@ -22,75 +28,101 @@
                     <div class='camera'></div>
                     <div class='speaker'></div>
                     <div class='home_button' data-bind="tap:cancel"></div>
-                    <div class='screen' data-bind="swipeleft:prev, swiperight:next">
-                        <div class='stage' >
-                            <div class="screen-slides" data-bind="foreach: screens">
-                                <span class="screen-slide" data-bind="foreach: $root.icons">
-                                    <span data-bind="css: name, hold: $root.holdIcons" ></span>
-                                </span>
-                            </div>
+                    <div class='screen' >
+                        <div class='stage' >                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
     <script>
         function Icon(name, text) {
             this.name = ko.observable(name || 'icon');
             this.text = text || 'test';
         }
-        
-        var iPhone = (function() {
-            var isHolding = ko.observable(false);
-            var screens = ko.observableArray([1, 2, 3]);
-            var icons = ko.observableArray([new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon()]);
+
+        var Container = (function() {
+            var $screens = $('.screen-slides');
+            var pos = 0;
+            var screenStep = 320;
             
-            function holdIcons() {
-                //TODO: set every icon class to holded. we can also make it for some top level container.
-                isHolding(!isHolding());
-                var iconsArr = icons();
-                for (var i = 0; i < iconsArr.length; i++) {
+            function moveContainer(deltaX) {
+                var offset = deltaX / 10;
+                var absOffset = Math.abs(offset);
+                if (absOffset < 20) return;
+                if(offset>0 && pos>-640){
+                    pos = pos - screenStep;
+                    //$screens.css("left", pos + "px");
+                    $screens.css("transform", "translate(" + pos + "px,0)");
+
+                }
+                else if(offset<0 && pos<0){
+                    pos = pos + screenStep;
+                    $screens.css("transform", "translate(" + pos + "px,0)");
+                }
+
+            }
+
+            return {
+                    move: moveContainer
+            };
+        }());
+
+                    var iPhone = (function() {
+                    var isHolding = ko.observable(false);
+                    var screens = ko.observableArray([1, 2, 3]);
+                    var icons = ko.observableArray([new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon()]);
+            
+                    function holdIcons() {
+                    //TODO: set every icon class to holded. we can also make it for some top level container.
+                    isHolding(!isHolding());
+                    var iconsArr = icons();
+                    for (var i = 0; i < iconsArr.length; i++) {
                     var iconClass = isHolding() ? 'icon shake' : 'icon';
                     iconsArr[i].name(iconClass);
                 }
                 
-                icons(iconsArr);                
-            };
+                    icons(iconsArr);                
+                };
             
-            function cancel() {
-                if (isHolding()) {
+                    function cancel() {
+                    if (isHolding()) {
                     holdIcons();//hold once again to cancel hold.
                 }
-            };
-            
-            function next() {                
-                addIconClass('moveOutRight moveInLeft');
-            }
+                };                        
 
-            function prev() {
-                //TODO: switch to the previous page if any.
-                addIconClass('moveInRight');
-            }
+                function next(e) {
+                    //$('.screen-slides').css('left', '-320px');
+                    //Container.move(e.gesture.deltaX);
+                    Container.move(-320);
+                    //console.log(e);
+                }
 
-            return {
-                isHolding: isHolding,
-                screens:screens,
-                icons: icons,
-                holdIcons: holdIcons,
-                cancel: cancel,
-                next:next,
-                prev: prev,
-                addIconClass: addIconClass
-            };
-        }());
+                function prev(e) {
+                    //$('.screen-slides').css('left', '0');
+                    //Container.move(e.gesture.deltaX);
+                    Container.move(320);
+                    //console.log(e);
+                }
+
+                    return {
+                    isHolding: isHolding,
+                    screens:screens,
+                    icons: icons,
+                    holdIcons: holdIcons,
+                    cancel: cancel,
+                    next:next,
+                    prev: prev
+                };
+                }());
         
-        ko.applyBindings(iPhone);
-        $(function () {
-            $(".icon").bind("webkitAnimationEnd oTransitionEnd otransitionend transitionend msTransitionEnd", function () {
-                console.log('ended');
-            });
-        });
+                    ko.applyBindings(iPhone);
+                    $(function () {
+                    $(".icon").bind("webkitAnimationEnd oTransitionEnd otransitionend transitionend msTransitionEnd", function () {
+                    console.log('ended');
+                });
+                });
         
     </script>
 </body>
