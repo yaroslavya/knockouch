@@ -1,4 +1,91 @@
-﻿html,
+﻿@-webkit-keyframes tremor {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(-4deg);
+  }
+  20% {
+    -webkit-transform: rotate(4deg);
+  }
+  30% {
+    -webkit-transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(4deg);
+  }
+  50% {
+    -webkit-transform: rotate(-4deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+  }
+  70% {
+    -webkit-transform: rotate(-4deg);
+  }
+  80% {
+    -webkit-transform: rotate(4deg);
+  }
+  90% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-4deg);
+  }
+}
+.shake {
+  -webkit-animation-name: tremor;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveInLeftFrames {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes moveInRightFrames {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes moveOutRightFrames {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(-500px);
+  }
+}
+.moveInLeft {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: moveInLeftFrames;
+}
+.moveInRight {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: moveInRightFrames;
+}
+.moveOutRight {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: moveOutRightFrames;
+}
+html,
 body {
   height: 100%;
 }
@@ -92,6 +179,7 @@ body {
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
 }
 .iphone .glass_face {
+  z-index: 2;
   position: relative;
   width: 364px;
   height: 726px;
@@ -292,6 +380,8 @@ body {
   background: #0a0a0a;
 }
 .iphone .stage {
+  z-index: 100;
+  position: relative;
   width: 320px;
   height: 480px;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #222222), color-stop(100%, #111111));
@@ -299,6 +389,7 @@ body {
   background: -moz-linear-gradient(#222222, #111111);
   background: -o-linear-gradient(#222222, #111111);
   background: linear-gradient(#222222, #111111);
+  overflow-x: hidden;
 }
 .iphone .mute_rocker {
   position: absolute;
@@ -385,45 +476,12 @@ body {
   -moz-box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 1px 1px #222222 inset 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-@-webkit-keyframes spaceboots {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  10% {
-    -webkit-transform: rotate(-4deg);
-  }
-  20% {
-    -webkit-transform: rotate(4deg);
-  }
-  30% {
-    -webkit-transform: rotate(0deg);
-  }
-  40% {
-    -webkit-transform: rotate(4deg);
-  }
-  50% {
-    -webkit-transform: rotate(-4deg);
-  }
-  60% {
-    -webkit-transform: rotate(0deg);
-  }
-  70% {
-    -webkit-transform: rotate(-4deg);
-  }
-  80% {
-    -webkit-transform: rotate(4deg);
-  }
-  90% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(-4deg);
-  }
+.screen-slides {
+  width: 980px;
+  height: 480px;
 }
-.shake {
-  -webkit-animation-name: spaceboots;
-  -webkit-animation-duration: 0.8s;
-  -webkit-transform-origin: 50% 50%;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+.screen-slide {
+  display: inline-block;
+  width: 320px;
+  height: 480px;
 }

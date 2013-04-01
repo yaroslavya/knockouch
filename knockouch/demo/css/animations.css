@@ -1,0 +1,87 @@
+﻿@-webkit-keyframes tremor {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(-4deg);
+  }
+  20% {
+    -webkit-transform: rotate(4deg);
+  }
+  30% {
+    -webkit-transform: rotate(0deg);
+  }
+  40% {
+    -webkit-transform: rotate(4deg);
+  }
+  50% {
+    -webkit-transform: rotate(-4deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+  }
+  70% {
+    -webkit-transform: rotate(-4deg);
+  }
+  80% {
+    -webkit-transform: rotate(4deg);
+  }
+  90% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-4deg);
+  }
+}
+.shake {
+  -webkit-animation-name: tremor;
+  -webkit-animation-duration: 0.8s;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes moveInLeftFrames {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes moveInRightFrames {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@-webkit-keyframes moveOutRightFrames {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(-500px);
+  }
+}
+.moveInLeft {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: moveInLeftFrames;
+}
+.moveInRight {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: moveInRightFrames;
+}
+.moveOutRight {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: moveOutRightFrames;
+}
