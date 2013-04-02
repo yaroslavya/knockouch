@@ -53,12 +53,15 @@
                 if (absOffset < 20) return;
                 if(offset>0 && pos>-640){
                     pos = pos - screenStep;
-                    //$screens.css("left", pos + "px");
+                    $screens.removeClass('animated');
+                    $screens.addClass('animated');
                     $screens.css("transform", "translate(" + pos + "px,0)");
 
                 }
                 else if(offset<0 && pos<0){
                     pos = pos + screenStep;
+                    $screens.removeClass('animated');
+                    $screens.addClass('animated');
                     $screens.css("transform", "translate(" + pos + "px,0)");
                 }
 
@@ -117,13 +120,7 @@
                 };
                 }());
         
-                    ko.applyBindings(iPhone);
-                    $(function () {
-                    $(".icon").bind("webkitAnimationEnd oTransitionEnd otransitionend transitionend msTransitionEnd", function () {
-                    console.log('ended');
-                });
-                });
-        
+                ko.applyBindings(iPhone);
     </script>
 </body>
 </html>

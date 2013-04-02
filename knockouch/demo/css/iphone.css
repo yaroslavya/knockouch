@@ -459,7 +459,7 @@ body {
   display: inline-block;
   height: 56px;
   width: 56px;
-  margin: 0 10px;
+  margin: 0 7px 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -490,8 +490,16 @@ body {
   height: 480px;
 }
 .screen-slide {
+  padding: 10px;
+  text-align: left;
   display: block;
   float: left;
-  width: 320px;
-  height: 480px;
+  width: 300px;
+  height: 460px;
+}
+.animated {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
 }
