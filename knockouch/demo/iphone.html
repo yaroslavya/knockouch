@@ -100,9 +100,9 @@
                 var isHolding = ko.observable(false);
 
                 var icons = ko.observableArray([]);
-                var screen1 = new Screen([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.twitter), new Icon(ico.photography), new Icon(ico.settings), new Icon(ico.phone), new Icon()]);
-                var screen2 = new Screen([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.twitter), new Icon(ico.photography), new Icon()]);
-                var screen3 = new Screen([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.settings), new Icon(ico.phone), new Icon()]);
+                var screen1 = new Screen([new Icon(ico.sms), new Icon(ico.phone), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.settings)]);
+                var screen2 = new Screen([new Icon(ico.safari), new Icon(ico.twitter), new Icon(ico.contacts), new Icon(ico.photography)]);
+                var screen3 = new Screen([new Icon()]);
                 var screens = ko.observableArray([screen1, screen2, screen3]);
                 
                 function iconTemplate(icon) {
@@ -111,7 +111,7 @@
                 
                 function holdIcons() {
                     isHolding(!isHolding());
-                    
+                    //just going through every screen and every icon to add/remove shake class to make it shake/stop shaking.
                     for (var j = 0; j < screens().length; j++) {
                         var iconsArr = screens()[j].icons();
                         for (var i = 0; i < iconsArr.length; i++) {
