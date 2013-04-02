@@ -18,7 +18,7 @@
                 </div>
             </span>
         </script>
-        <script type="text/html" id="iNotes">
+        <script type="text/html" id="imgIcons">
             <span data-bind="css: name, hold: $root.holdIcons">                            
                <span data-bind="css:iconType"></span>
             </span>
@@ -26,7 +26,7 @@
         <div class='iphone'>
             <div class="cut-wrapper">
                 <div class="screen-slides animated" data-bind="swipeleft: prev, swiperight: next, foreach: screens">
-                    <span class="screen-slide" data-bind="template: { name: 'iNotes', foreach: icons }">
+                    <span class="screen-slide" data-bind="template: { name: $root.iconTemplate, foreach: icons }">
                         
                     </span>
                 </div>
@@ -99,18 +99,27 @@
             var iPhone = (function () {
                 var isHolding = ko.observable(false);
 
-                var icons = ko.observableArray([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.twitter), new Icon(ico.photography), new Icon(ico.settings), new Icon(ico.phone), new Icon(ico.twitter)]);
-                var screens = ko.observableArray([new Screen(icons()), new Screen(icons()), new Screen(icons())]);
-
+                var icons = ko.observableArray([]);
+                var screen1 = new Screen([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.twitter), new Icon(ico.photography), new Icon(ico.settings), new Icon(ico.phone), new Icon()]);
+                var screen2 = new Screen([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.twitter), new Icon(ico.photography), new Icon()]);
+                var screen3 = new Screen([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.settings), new Icon(ico.phone), new Icon()]);
+                var screens = ko.observableArray([screen1, screen2, screen3]);
+                
+                function iconTemplate(icon) {
+                    return icon.iconType == 'calendar' ? 'iCalendar' : 'imgIcons';
+                }
+                
                 function holdIcons() {
                     isHolding(!isHolding());
-                    var iconsArr = icons();
-                    for (var i = 0; i < iconsArr.length; i++) {
-                        var iconClass = isHolding() ? 'icon shake' : 'icon';
-                        iconsArr[i].name(iconClass);
+                    
+                    for (var j = 0; j < screens().length; j++) {
+                        var iconsArr = screens()[j].icons();
+                        for (var i = 0; i < iconsArr.length; i++) {
+                            var iconClass = isHolding() ? 'icon shake' : 'icon';
+                            iconsArr[i].name(iconClass);
+                        }
+                        screens()[j].icons(iconsArr);
                     }
-
-                    icons(iconsArr);
                 };
 
                 function cancel() {
@@ -135,6 +144,7 @@
                     isHolding: isHolding,
                     screens: screens,
                     icons: icons,
+                    iconTemplate:iconTemplate,
                     holdIcons: holdIcons,
                     cancel: cancel,
                     next: next,
