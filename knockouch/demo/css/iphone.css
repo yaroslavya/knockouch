@@ -540,43 +540,51 @@ body {
   -o-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
 }
-.i_notes {
-  background: -webkit-linear-gradient(top, #785b4c 0%, #42332a 15px, #221c18 16px, #929270 17px, #faf8b1 17px, #faf8b1 100%);
-  background: -moz-linear-gradient(top, #785b4c 0%, #42332a 15px, #221c18 16px, #929270 17px, #faf8b1 17px, #faf8b1 100%);
-  background: -ms-linear-gradient(top, #785b4c 0%, #42332a 15px, #221c18 16px, #929270 17px, #faf8b1 17px, #faf8b1 100%);
-  background: -o-linear-gradient(top, #785b4c 0%, #42332a 15px, #221c18 16px, #929270 17px, #faf8b1 17px, #faf8b1 100%);
-  background: linear-gradient(top, #785b4c 0%, #42332a 15px, #221c18 16px, #929270 17px, #faf8b1 17px, #faf8b1 100%);
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
+.safari {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/safari.ico') no-repeat;
 }
-.i_notes:after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background: #d3d699;
-  top: 23px;
-  left: 0;
-  -webkit-border-radius: 0 0 2px 2px;
-  -moz-border-radius: 0 0 2px 2px;
-  -ms-border-radius: 0 0 2px 2px;
-  -o-border-radius: 0 0 2px 2px;
-  border-radius: 0 0 2px 2px;
-  -webkit-box-shadow: #d3d699 0 5px 0, #d3d699 0 10px 0, #d3d699 0 15px 0, #d3d699 0 20px 0, #d3d699 0 25px 0;
-  -moz-box-shadow: #d3d699 0 5px 0, #d3d699 0 10px 0, #d3d699 0 15px 0, #d3d699 0 20px 0, #d3d699 0 25px 0;
-  box-shadow: #d3d699 0 5px 0, #d3d699 0 10px 0, #d3d699 0 15px 0, #d3d699 0 20px 0, #d3d699 0 25px 0;
+.settings {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/settings.ico') no-repeat;
 }
-.i_notes:before {
-  content: '';
-  position: absolute;
-  height: 40px;
-  width: 1px;
-  border-left: 1px solid #d9c884;
-  border-right: 1px solid #d9c884;
-  top: 17px;
-  left: 10px;
-  z-index: 3;
+.twitter {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/twitter.ico') no-repeat;
+}
+.contacts {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/contacts.ico') no-repeat;
+}
+.sms {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/sms.ico') no-repeat;
+}
+.email {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/email.ico') no-repeat;
+}
+.phone {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/phone.ico') no-repeat;
+}
+.photography {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+  background: url('img/photography.ico') no-repeat;
 }

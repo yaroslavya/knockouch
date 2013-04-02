@@ -18,10 +18,15 @@
                 </div>
             </span>
         </script>
+        <script type="text/html" id="iNotes">
+            <span data-bind="css: name, hold: $root.holdIcons">                            
+               <span data-bind="css:iconType"></span>
+            </span>
+        </script>
         <div class='iphone'>
             <div class="cut-wrapper">
                 <div class="screen-slides animated" data-bind="swipeleft: prev, swiperight: next, foreach: screens">
-                    <span class="screen-slide" data-bind="template: { name: 'iCalendar', foreach: icons }">
+                    <span class="screen-slide" data-bind="template: { name: 'iNotes', foreach: icons }">
                         
                     </span>
                 </div>
@@ -45,7 +50,18 @@
             </div>
         </div>
         <script>
-            function Icon(name, text, iconType) {
+            var ico = {
+                contacts:'contacts',
+                email: 'email',
+                phone: 'phone',
+                photography: 'photography',
+                safari: 'safari',
+                settings:'settings',
+                sms: 'sms',
+                twitter: 'twitter',
+            };
+            
+            function Icon(iconType, name, text) {
                 this.name = ko.observable(name || 'icon');
                 this.text = text || 'test';
                 this.iconType = iconType || 'calendar';
@@ -83,11 +99,10 @@
             var iPhone = (function () {
                 var isHolding = ko.observable(false);
 
-                var icons = ko.observableArray([new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon()]);
+                var icons = ko.observableArray([new Icon(ico.sms), new Icon(ico.safari), new Icon(ico.email), new Icon(ico.contacts), new Icon(ico.twitter), new Icon(ico.photography), new Icon(ico.settings), new Icon(ico.phone), new Icon(ico.twitter)]);
                 var screens = ko.observableArray([new Screen(icons()), new Screen(icons()), new Screen(icons())]);
 
                 function holdIcons() {
-                    //TODO: set every icon class to holded. we can also make it for some top level container.
                     isHolding(!isHolding());
                     var iconsArr = icons();
                     for (var i = 0; i < iconsArr.length; i++) {
@@ -108,14 +123,12 @@
                     //$('.screen-slides').css('left', '-320px');
                     //Container.move(e.gesture.deltaX);
                     Container.move(-320);
-                    //console.log(e);
                 }
 
                 function prev(e) {
                     //$('.screen-slides').css('left', '0');
                     //Container.move(e.gesture.deltaX);
                     Container.move(320);
-                    //console.log(e);
                 }
 
                 return {
