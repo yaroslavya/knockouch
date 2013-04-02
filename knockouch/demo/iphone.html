@@ -14,7 +14,12 @@
         <div class="cut-wrapper">
             <div class="screen-slides animated" data-bind="swipeleft: prev, swiperight: next, foreach: screens" >
                 <span class="screen-slide" data-bind="foreach: $root.icons">
-                    <span data-bind="css: name, hold: $root.holdIcons" ></span>
+                    <span data-bind="css: name, hold: $root.holdIcons" >
+                        <div class="i_calendar">
+					        <div class="day" id="iphone_icon_day">Tuesday</div>
+					        <div class="day_num" id="iphone_icon_day_num">2</div>
+				        </div>
+                    </span>
                 </span>
             </div>
         </div>

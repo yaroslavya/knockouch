@@ -57,7 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="demo\css\animate.css" />
     <Content Include="demo\css\animations.css">
       <DependentUpon>animations.less</DependentUpon>
     </Content>
@@ -84,7 +83,6 @@
     </Content>
     <Content Include="demo\iphone.html" />
     <Content Include="demo\knockouch-demo.html" />
-    <Content Include="demo\test.html" />
     <Content Include="libs\hammer.js" />
     <Content Include="libs\hammer.min.js" />
     <Content Include="libs\knockout-2.2.1.js" />
