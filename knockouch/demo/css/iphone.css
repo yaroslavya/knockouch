@@ -550,41 +550,41 @@ body {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/settings.ico') no-repeat;
+  background: url('../css/img/settings.ico') no-repeat;
 }
 .twitter {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/twitter.ico') no-repeat;
+  background: url('../css/img/twitter.ico') no-repeat;
 }
 .contacts {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/contacts.ico') no-repeat;
+  background: url('../css/img/contacts.ico') no-repeat;
 }
 .sms {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/sms.ico') no-repeat;
+  background: url('../css/img/sms.ico') no-repeat;
 }
 .email {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/email.ico') no-repeat;
+  background: url('../css/img/email.ico') no-repeat;
 }
 .phone {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/phone.ico') no-repeat;
+  background: url('../css/img/phone.ico') no-repeat;
 }
 .photography {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/photography.ico') no-repeat;
+  background: url('../css/img/photography.ico') no-repeat;
 }
