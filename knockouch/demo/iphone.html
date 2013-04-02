@@ -12,7 +12,7 @@
 <body>
     <div class='iphone'>
         <div class="cut-wrapper">
-            <div class="screen-slides" data-bind="swipeleft: prev, swiperight: next, foreach: screens" >
+            <div class="screen-slides animated" data-bind="swipeleft: prev, swiperight: next, foreach: screens" >
                 <span class="screen-slide" data-bind="foreach: $root.icons">
                     <span data-bind="css: name, hold: $root.holdIcons" ></span>
                 </span>
@@ -51,20 +51,15 @@
                 var offset = deltaX / 10;
                 var absOffset = Math.abs(offset);
                 if (absOffset < 20) return;
+                
                 if(offset>0 && pos>-640){
                     pos = pos - screenStep;
-                    $screens.removeClass('animated');
-                    $screens.addClass('animated');
-                    $screens.css("transform", "translate(" + pos + "px,0)");
-
                 }
                 else if(offset<0 && pos<0){
                     pos = pos + screenStep;
-                    $screens.removeClass('animated');
-                    $screens.addClass('animated');
-                    $screens.css("transform", "translate(" + pos + "px,0)");
                 }
-
+                
+                $screens.css("transform", "translate(" + pos + "px,0)");
             }
 
             return {
