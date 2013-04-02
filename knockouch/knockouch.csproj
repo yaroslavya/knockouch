@@ -63,6 +63,14 @@
     <Content Include="demo\css\animations.min.css">
       <DependentUpon>animations.less</DependentUpon>
     </Content>
+    <Content Include="demo\css\img\contacts.ico" />
+    <Content Include="demo\css\img\email.ico" />
+    <Content Include="demo\css\img\phone.ico" />
+    <Content Include="demo\css\img\photography.ico" />
+    <Content Include="demo\css\img\safari.ico" />
+    <Content Include="demo\css\img\settings.ico" />
+    <Content Include="demo\css\img\sms.ico" />
+    <Content Include="demo\css\img\twitter.ico" />
     <Content Include="demo\css\iphone.css">
       <DependentUpon>iphone.less</DependentUpon>
     </Content>
