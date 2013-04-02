@@ -95,6 +95,8 @@ body {
   background: #cccccc;
 }
 .iphone {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;

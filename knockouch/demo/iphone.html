@@ -7,18 +7,18 @@
     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
     <script src="../libs/hammer.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="../src/knockouch.js"></script>    
+    <script src="../src/knockouch.js"></script>
 </head>
 <body>
     <div class='iphone'>
         <div class="cut-wrapper">
-            <div class="screen-slides animated" data-bind="swipeleft: prev, swiperight: next, foreach: screens" >
+            <div class="screen-slides animated" data-bind="swipeleft: prev, swiperight: next, foreach: screens">
                 <span class="screen-slide" data-bind="foreach: $root.icons">
-                    <span data-bind="css: name, hold: $root.holdIcons" >
+                    <span data-bind="css: name, hold: $root.holdIcons">
                         <div class="i_calendar">
-					        <div class="day" id="iphone_icon_day">Tuesday</div>
-					        <div class="day_num" id="iphone_icon_day_num">2</div>
-				        </div>
+                            <div class="day" id="iphone_icon_day">Tuesday</div>
+                            <div class="day_num" id="iphone_icon_day_num">2</div>
+                        </div>
                     </span>
                 </span>
             </div>
@@ -32,95 +32,101 @@
                 <div class='glass_face'>
                     <div class='camera'></div>
                     <div class='speaker'></div>
-                    <div class='home_button' data-bind="tap:cancel"></div>
-                    <div class='screen' >
-                        <div class='stage' >                            
+                    <div class='home_button' data-bind="tap: cancel"></div>
+                    <div class='screen'>
+                        <div class='stage'>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <script>
-        function Icon(name, text) {
+        function Icon(name, text, iconType) {
             this.name = ko.observable(name || 'icon');
             this.text = text || 'test';
-        }
+            this.iconType = iconType || 'calendar';
+        };
 
-        var Container = (function() {
+        function Screen(icons) {
+            this.icons = ko.observableArray(icons);
+        };
+
+        var Container = (function () {
             var $screens = $('.screen-slides');
             var pos = 0;
             var screenStep = 320;
-            
+
             function moveContainer(deltaX) {
                 var offset = deltaX / 10;
                 var absOffset = Math.abs(offset);
                 if (absOffset < 20) return;
-                
-                if(offset>0 && pos>-640){
+
+                if (offset > 0 && pos > -640) {
                     pos = pos - screenStep;
                 }
-                else if(offset<0 && pos<0){
+                else if (offset < 0 && pos < 0) {
                     pos = pos + screenStep;
                 }
-                
+
                 $screens.css("transform", "translate(" + pos + "px,0)");
             }
 
             return {
-                    move: moveContainer
+                move: moveContainer
             };
         }());
 
-                    var iPhone = (function() {
-                    var isHolding = ko.observable(false);
-                    var screens = ko.observableArray([1, 2, 3]);
-                    var icons = ko.observableArray([new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon()]);
-            
-                    function holdIcons() {
-                    //TODO: set every icon class to holded. we can also make it for some top level container.
-                    isHolding(!isHolding());
-                    var iconsArr = icons();
-                    for (var i = 0; i < iconsArr.length; i++) {
+        var iPhone = (function () {
+            var isHolding = ko.observable(false);
+
+            var icons = ko.observableArray([new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon(), new Icon()]);
+            var screens = ko.observableArray([new Screen(icons()), new Screen(icons()), new Screen(icons())]);
+
+            function holdIcons() {
+                //TODO: set every icon class to holded. we can also make it for some top level container.
+                isHolding(!isHolding());
+                var iconsArr = icons();
+                for (var i = 0; i < iconsArr.length; i++) {
                     var iconClass = isHolding() ? 'icon shake' : 'icon';
                     iconsArr[i].name(iconClass);
                 }
-                
-                    icons(iconsArr);                
-                };
-            
-                    function cancel() {
-                    if (isHolding()) {
+
+                icons(iconsArr);
+            };
+
+            function cancel() {
+                if (isHolding()) {
                     holdIcons();//hold once again to cancel hold.
                 }
-                };                        
+            };
 
-                function next(e) {
-                    //$('.screen-slides').css('left', '-320px');
-                    //Container.move(e.gesture.deltaX);
-                    Container.move(-320);
-                    //console.log(e);
-                }
+            function next(e) {
+                //$('.screen-slides').css('left', '-320px');
+                //Container.move(e.gesture.deltaX);
+                Container.move(-320);
+                //console.log(e);
+            }
 
-                function prev(e) {
-                    //$('.screen-slides').css('left', '0');
-                    //Container.move(e.gesture.deltaX);
-                    Container.move(320);
-                    //console.log(e);
-                }
+            function prev(e) {
+                //$('.screen-slides').css('left', '0');
+                //Container.move(e.gesture.deltaX);
+                Container.move(320);
+                //console.log(e);
+            }
 
-                    return {
-                    isHolding: isHolding,
-                    screens:screens,
-                    icons: icons,
-                    holdIcons: holdIcons,
-                    cancel: cancel,
-                    next:next,
-                    prev: prev
-                };
-                }());
-        
-                ko.applyBindings(iPhone);
+            return {
+                isHolding: isHolding,
+                screens: screens,
+                icons: icons,
+                holdIcons: holdIcons,
+                cancel: cancel,
+                next: next,
+                prev: prev
+            };
+        }());
+
+        ko.applyBindings(iPhone);
     </script>
 </body>
 </html>
