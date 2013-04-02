@@ -534,6 +534,8 @@ body {
   box-shadow: inset rgba(0, 0, 0, 0.5) 0 0 10px;
   -webkit-border-radius: 0 0 10px 10px;
   -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
 }
 .i_notes {
@@ -558,6 +560,8 @@ body {
   left: 0;
   -webkit-border-radius: 0 0 2px 2px;
   -moz-border-radius: 0 0 2px 2px;
+  -ms-border-radius: 0 0 2px 2px;
+  -o-border-radius: 0 0 2px 2px;
   border-radius: 0 0 2px 2px;
   -webkit-box-shadow: #d3d699 0 5px 0, #d3d699 0 10px 0, #d3d699 0 15px 0, #d3d699 0 20px 0, #d3d699 0 25px 0;
   -moz-box-shadow: #d3d699 0 5px 0, #d3d699 0 10px 0, #d3d699 0 15px 0, #d3d699 0 20px 0, #d3d699 0 25px 0;
