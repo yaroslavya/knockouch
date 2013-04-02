@@ -544,7 +544,7 @@ body {
   width: 55px;
   height: 55px;
   display: inline-block;
-  background: url('img/safari.ico') no-repeat;
+  background: url('../css/img/safari.ico') no-repeat;
 }
 .settings {
   width: 55px;
