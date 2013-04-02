@@ -129,15 +129,11 @@
                 };
 
                 function next(e) {
-                    //$('.screen-slides').css('left', '-320px');
-                    //Container.move(e.gesture.deltaX);
-                    Container.move(-320);
+                    Container.move(-e.gesture.deltaX);
                 }
 
                 function prev(e) {
-                    //$('.screen-slides').css('left', '0');
-                    //Container.move(e.gesture.deltaX);
-                    Container.move(320);
+                    Container.move(-e.gesture.deltaX);
                 }
 
                 return {
