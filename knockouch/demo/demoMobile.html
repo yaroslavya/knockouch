@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <script src="../libs/knockout-2.2.1.js"></script>
     <script src="../libs/hammer.js"></script>
     <script src="../src/knockouch.js"></script>
@@ -12,19 +13,6 @@
             padding: 0;
             margin: 0;
             -webkit-perspective: 700px;
-            -webkit-zoom-in: none;
-            -webkit-zoom-out: none;
-            -webkit-user-drag: none;
-            -webkit-touch-callout:none;
-            -webkit-text-size-adjust: none;
-            -webkit-box-sizing: border-box;
-            -webkit-user-select: none;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            -webkit-overflow-scrolling:touch;
-
-            -webkit-user-select:none;
-            -moz-user-select:none;
-            user-select:none;
         }
 
         .cube {
@@ -75,7 +63,7 @@
         }
     </style>
 </head>
-<body class="ui-content" data-bind="drag:rotate, dragend:endRotate">
+<body data-bind="drag:rotate, dragend:endRotate">
     <div class="cube">
         <div class="face one"></div>
         <div class="face two"></div>
@@ -87,8 +75,13 @@
 </body>
 </html>
 <script>
-    $(document).delegate(".ui-content", "scrollstart", false);
     knockouch("Hammer", { drag_min_distance: 0 });
+
+
+    document.ontouchmove = function (e) {
+        e.preventDefault();
+    }
+
 
     function CubeViewModel ()  {
         var self = this,
