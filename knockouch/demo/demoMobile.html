@@ -75,7 +75,7 @@
 </body>
 </html>
 <script>
-    knockouch("Hammer", { drag_min_distance: 0 ,transform_min_scale: 0});
+    knockouch("Hammer", { drag_min_distance: 0 ,transform_min_scale: 0,transform_min_rotation:0});
 
 
     document.ontouchmove = function (e) {
@@ -99,11 +99,12 @@
             endRotateY = rotateY;
         };
         self.zoom = function (ev) {
-            scale = endScale + ev.gesture.scale;
-            $('.field')[0].style.webkitTransform = "scale(" + scale + ") rotate(" + ev.gesture.rotation + "deg)";
+            scale = endScale + ev.gesture.scale - 1;
+            $('.field')[0].style.webkitTransform = "scale(" + scale + ")";
+            $('.field')[0].style.webkitTransform = "rotate(" + ev.gesture.rotation + "deg)";
         };
         self.endZoom = function (ev) {
-            endScale = $('.field')[0].style.webkitTransform.scale;
+            endScale = ev.ev.gesture.scale;
         };
 
     };
