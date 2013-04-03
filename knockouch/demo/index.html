@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="lib/three.min.js"></script>
+    <script src="lib/knockout-2.2.1.js"></script>
+    <script src="lib/hammer.min.js"></script>
+    <script src="src/knockouch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <title></title>
+    <style>
+    </style>
+</head>
+<body>
+    <div data-bind="drag:rotate, dragend:rotateEnd" style="height:200px; width:200px;">
+
+    </div>
+</body>
+</html>
+
+<script>
+    var camera, scene, renderer;
+    var geometry, material, mesh;
+    var rotateX = 0, rotateY = 0;
+    var lastRotateX =0, lastRotateY = 0;
+
+    init();
+    animate();
+
+    var model = {
+        rotate: function (ev) {
+            rotateX = ev.gesture.deltaY / 100 + lastRotateX;
+            rotateY = ev.gesture.deltaX / 100 + lastRotateY;
+            console.log(ev);
+        },
+        rotateEnd: function (ev) {
+            lastRotateX = rotateX;
+            lastRotateY = rotateY;
+        }
+    };
+
+    ko.applyBindings(model);
+
+    function init() {
+
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 1000;
+
+        scene = new THREE.Scene();
+
+        geometry = new THREE.CubeGeometry(200, 200, 200);
+        material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+
+        mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        document.body.appendChild(renderer.domElement);
+
+    }
+
+    function animate() {
+        // note: three.js includes requestAnimationFrame shim
+        requestAnimationFrame(animate);
+
+        mesh.rotation.x = rotateX;
+        mesh.rotation.y = rotateY;
+
+        renderer.render(scene, camera);
+    }
+
+</script>
