@@ -87,7 +87,7 @@
         var self = this,
             rotateX = 0, rotateY = 0,
             endRotateX = 0, endRotateY = 0,
-            scale = 0;
+            scale = 0, endScale = 0;
 
         self.rotate = function (ev) {
             rotateX = ev.gesture.deltaX / 2 + endRotateX;
@@ -99,10 +99,11 @@
             endRotateY = rotateY;
         };
         self.zoom = function (ev) {
-            $('.field')[0].style.webkitTransform = "scale(" + ev.gesture.scale + scale + ")";
+            scale = endScale + ev.gesture.scale;
+            $('.field')[0].style.webkitTransform = "scale(" + scale + ")";
         };
-        self.endZoom = function (ev) {
-            scale = ev.gesture.scale;
+        self.endZoom = function () {
+            endScale = scale;
         };
 
     };
