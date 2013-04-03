@@ -63,7 +63,7 @@
         }
     </style>
 </head>
-<body data-bind="drag:rotate, dragend:endRotate">
+<body class="field" data-bind="drag:rotate, dragend:endRotate,transform:zoom">
     <div class="cube">
         <div class="face one"></div>
         <div class="face two"></div>
@@ -92,13 +92,13 @@
             rotateX = ev.gesture.deltaX / 2 + endRotateX;
             rotateY = (ev.gesture.deltaY / 2) * -1 + endRotateY;
             $('.cube')[0].style.webkitTransform = "rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg)";
-
         };
         self.endRotate = function () {
             endRotateX = rotateX;
             endRotateY = rotateY;
         };
-        self.zoom = function () {
+        self.zoom = function (ev) {
+            $('.field')[0].style.webkitTransform = "scale(" + ev.gesture.scale + ")";
         };
 
     };
