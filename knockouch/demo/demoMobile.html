@@ -103,7 +103,7 @@
             $('.field')[0].style.webkitTransform = "scale(" + scale + ") rotate(" + ev.gesture.rotation + ")";
         };
         self.endZoom = function (ev) {
-            endScale = scale;
+            endScale = $('.field')[0].style.webkitTransform.scale;
         };
 
     };
