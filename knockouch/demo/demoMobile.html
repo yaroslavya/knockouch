@@ -11,6 +11,12 @@
         body {
             padding: 0;
             margin: 0;
+            -webkit-perspective: 700px;
+            -webkit-zoom-in: none;
+            -webkit-zoom-out: none;
+            -webkit-user-drag: none;
+            -webkit-touch-callout:none;
+            -webkit-touch-callout: none;
         }
 
         .cube {
@@ -19,13 +25,6 @@
             margin: 50px auto;
             width: 240px;
             -webkit-transform-style: preserve-3d;
-        }
-
-        .cube-no-preserve {
-            height: 240px;
-            position: relative;
-            margin: 50px auto;
-            width: 240px;
         }
 
         .face {
@@ -96,6 +95,8 @@
         self.endRotate = function () {
             endRotateX = rotateX;
             endRotateY = rotateY;
+        };
+        self.zoom = function () {
         };
 
     };
