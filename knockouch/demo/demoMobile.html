@@ -77,11 +77,9 @@
 <script>
     knockouch("Hammer", { drag_min_distance: 0 });
 
-
     document.ontouchmove = function (e) {
         e.preventDefault();
     }
-
 
     function CubeViewModel() {
         var self = this,
@@ -106,7 +104,8 @@
             $('.field')[0].style.webkitTransform = "rotate(" + rotate + "deg)";
         };
         self.endZoom = function (ev) {
-            endScale = ev.gesture.scale;
+            endScale = scale;
+            endRotate = rotate;
         };
     };
     ko.applyBindings(new CubeViewModel());
