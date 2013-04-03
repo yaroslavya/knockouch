@@ -16,7 +16,15 @@
             -webkit-zoom-out: none;
             -webkit-user-drag: none;
             -webkit-touch-callout:none;
-            -webkit-touch-callout: none;
+            -webkit-text-size-adjust: none;
+            -webkit-box-sizing: border-box;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-overflow-scrolling:touch;
+
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            user-select:none;
         }
 
         .cube {
@@ -79,6 +87,7 @@
 </body>
 </html>
 <script>
+    $(document).delegate(".ui-content", "scrollstart", false);
     knockouch("Hammer", { drag_min_distance: 0 });
 
     function CubeViewModel ()  {
