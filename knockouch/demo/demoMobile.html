@@ -86,7 +86,8 @@
     function CubeViewModel ()  {
         var self = this,
             rotateX = 0, rotateY = 0,
-            endRotateX = 0, endRotateY = 0;
+            endRotateX = 0, endRotateY = 0,
+            scale = 0;
 
         self.rotate = function (ev) {
             rotateX = ev.gesture.deltaX / 2 + endRotateX;
@@ -98,7 +99,10 @@
             endRotateY = rotateY;
         };
         self.zoom = function (ev) {
-            $('.field')[0].style.webkitTransform = "scale(" + ev.gesture.scale + ")";
+            $('.field')[0].style.webkitTransform = "scale(" + ev.gesture.scale + scale + ")";
+        };
+        self.endZoom = function (ev) {
+            scale = ev.gesture.scale;
         };
 
     };
