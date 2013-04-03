@@ -7,10 +7,11 @@
     knockouch.touchLibrary = null;
     knockouch.touchLibraries = {};
     knockouch.touchEvents = ['tap', 'doubletap', 'hold', 'rotate',
-                       'drag', 'dragleft', 'dragright', 'dragup',
-                       'dragdown', 'transform', 'transformstart',
-                       'transformend', 'swipe', 'swipeleft', 'swiperight',
-                       'swipeup', 'swipedown', 'pinch', 'pinchin', 'pinchout'];
+                       'drag', 'dragend', 'dragstart', 'dragleft',
+                       'dragright', 'dragup', 'dragdown', 'transform',
+                       'transformstart', 'transformend', 'swipe', 'swipeleft',
+                       'swiperight', 'swipeup', 'swipedown', 'pinch', 'pinchin',
+                       'pinchout', 'release', 'touch'];
     
     knockouch.makeTouchHandlerShortcut = function(touchEventName) {
         ko.bindingHandlers[touchEventName] = {
