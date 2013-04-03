@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../libs/knockout-2.2.1.js"></script>
+    <script src="../libs/hammer.js"></script>
+    <script src="../src/knockouch.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <title></title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .cube {
+            height: 240px;
+            position: relative;
+            margin: 50px auto;
+            width: 240px;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .cube-no-preserve {
+            height: 240px;
+            position: relative;
+            margin: 50px auto;
+            width: 240px;
+        }
+
+        .face {
+            background-color: rgb(50, 50, 50);
+            -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+            height: 240px;
+            opacity: 0.7;
+            position: absolute;
+            width: 240px;
+        }
+
+        .one {
+            background-color: rgb(242, 24, 25);
+            -webkit-transform: rotateX(90deg) translateZ(120px);
+        }
+
+        .two {
+            background-color: rgb(235, 41, 158);
+            -webkit-transform: translateZ(120px);
+        }
+
+        .three {
+            background-color: rgb(252, 209, 22);
+            -webkit-transform: rotateY(90deg) translateZ(120px);
+        }
+
+        .four {
+            background-color: rgb(44, 45, 213);
+            -webkit-transform: rotateY(180deg) translateZ(120px);
+        }
+
+        .five {
+            background-color: rgb(125, 105, 181);
+            -webkit-transform: rotateY(-90deg) translateZ(120px);
+        }
+
+        .cube .six {
+            background-color: rgb(22, 226, 38);
+            -webkit-transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
+        }
+    </style>
+</head>
+<body data-bind="drag:rotate, dragend:endRotate">
+    <div class="cube">
+        <div class="face one"></div>
+        <div class="face two"></div>
+        <div class="face three"></div>
+        <div class="face four"></div>
+        <div class="face five"></div>
+        <div class="face six"></div>
+    </div>
+</body>
+</html>
+<script>
+    knockouch("Hammer", { drag_min_distance: 0 });
+
+    function CubeViewModel ()  {
+        var self = this,
+            rotateX = 0, rotateY = 0,
+            endRotateX = 0, endRotateY = 0;
+
+        self.rotate = function (ev) {
+            rotateX = ev.gesture.deltaX / 2 + endRotateX;
+            rotateY = (ev.gesture.deltaY / 2) * -1 + endRotateY;
+            $('.cube')[0].style.webkitTransform = "rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg)";
+
+        };
+        self.endRotate = function () {
+            endRotateX = rotateX;
+            endRotateY = rotateY;
+        };
+
+    };
+    ko.applyBindings(new CubeViewModel());
+
+</script>
