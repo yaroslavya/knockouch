@@ -98,13 +98,13 @@
             endRotateY = rotateY;
         };
         self.zoom = function (ev) {
-            scale = ev.gesture.scale + endScale;
+
             rotate = ev.gesture.rotation + endRotate;
-            $('.field')[0].style.webkitTransform = "scale(" + scale + ")";
+
             $('.field')[0].style.webkitTransform = "rotate(" + rotate + "deg)";
         };
         self.endZoom = function (ev) {
-            endScale = scale;
+
             endRotate = rotate;
         };
     };
