@@ -100,9 +100,9 @@
         };
         self.zoom = function (ev) {
             scale = endScale + ev.gesture.scale;
-            $('.field')[0].style.webkitTransform = "scale(" + scale + ")";
+            $('.field')[0].style.webkitTransform = "scale(" + scale + ") rotate(" + ev.gesture.rotation + ")";
         };
-        self.endZoom = function () {
+        self.endZoom = function (ev) {
             endScale = scale;
         };
 
