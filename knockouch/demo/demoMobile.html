@@ -75,7 +75,7 @@
 </body>
 </html>
 <script>
-    knockouch("Hammer", { drag_min_distance: 0 ,transform_min_scale: 0,transform_min_rotation:0});
+    knockouch("Hammer", { drag_min_distance: 0 });
 
 
     document.ontouchmove = function (e) {
@@ -83,11 +83,12 @@
     }
 
 
-    function CubeViewModel ()  {
+    function CubeViewModel() {
         var self = this,
             rotateX = 0, rotateY = 0,
+            scale = 0, rotate = 0,
             endRotateX = 0, endRotateY = 0,
-            scale = 0, endScale = 0;
+            endScale = 0, endRotate = 0;
 
         self.rotate = function (ev) {
             rotateX = ev.gesture.deltaX / 2 + endRotateX;
@@ -99,13 +100,14 @@
             endRotateY = rotateY;
         };
         self.zoom = function (ev) {
-            $('.field')[0].style.webkitTransform = "scale(" + ev.gesture.scale + ")";
-            $('.field')[0].style.webkitTransform = "rotate(" + ev.gesture.rotation + "deg)";
+            scale = ev.gesture.scale + endScale;
+            rotate = ev.gesture.rotation + endRotate;
+            $('.field')[0].style.webkitTransform = "scale(" + scale + ")";
+            $('.field')[0].style.webkitTransform = "rotate(" + rotate + "deg)";
         };
         self.endZoom = function (ev) {
-            endScale = ev.ev.gesture.scale;
+            endScale = ev.gesture.scale;
         };
-
     };
     ko.applyBindings(new CubeViewModel());
 
