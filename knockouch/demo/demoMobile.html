@@ -10,9 +10,14 @@
     <title></title>
     <style>
         body {
+            background-color: black;
             padding: 0;
-            margin: 0;
-            -webkit-perspective: 700px;
+            margin: 200px 0px 0px 0px;
+            -webkit-perspective: 1000;
+            -ms-perspective: 1000px;
+            -moz-perspective: 1000px;
+            -o-perspective: 1000px;
+            perspective: 1000px;
         }
 
         .cube {
@@ -21,11 +26,17 @@
             margin: 50px auto;
             width: 240px;
             -webkit-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
 
         .face {
-            background-color: rgb(50, 50, 50);
             -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+            -ms-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+            -o-box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
             height: 240px;
             opacity: 0.7;
             position: absolute;
@@ -33,37 +44,62 @@
         }
 
         .one {
-            background-color: rgb(242, 24, 25);
+            background-image: url(img/space1.jpg);
             -webkit-transform: rotateX(90deg) translateZ(120px);
+            -ms-transform: rotateX(90deg) translateZ(120px);
+            -moz-transform: rotateX(90deg) translateZ(120px);
+            -o-transform: rotateX(90deg) translateZ(120px);
+            transform: rotateX(90deg) translateZ(120px);
         }
 
         .two {
-            background-color: rgb(235, 41, 158);
+            background-image: url(img/space2.jpg);
             -webkit-transform: translateZ(120px);
+            -ms-transform: translateZ(120px);
+            -moz-transform: translateZ(120px);
+            -o-transform: translateZ(120px);
+            transform: translateZ(120px);
         }
 
         .three {
-            background-color: rgb(252, 209, 22);
+            background-image: url(img/space3.jpg);
             -webkit-transform: rotateY(90deg) translateZ(120px);
+            -ms-transform: rotateY(90deg) translateZ(120px);
+            -moz-transform: rotateY(90deg) translateZ(120px);
+            -o-transform: rotateY(90deg) translateZ(120px);
+            transform: rotateY(90deg) translateZ(120px);
         }
 
         .four {
-            background-color: rgb(44, 45, 213);
+            background-image: url(img/space4.jpg);
             -webkit-transform: rotateY(180deg) translateZ(120px);
+            -ms-transform: rotateY(180deg) translateZ(120px);
+            -moz-transform: rotateY(180deg) translateZ(120px);
+            -o-transform: rotateY(180deg) translateZ(120px);
+            transform: rotateY(180deg) translateZ(120px);
         }
 
         .five {
-            background-color: rgb(125, 105, 181);
+            background-image: url(img/space5.jpg);
             -webkit-transform: rotateY(-90deg) translateZ(120px);
+            -ms-transform: rotateY(-90deg) translateZ(120px);
+            -moz-transform: rotateY(-90deg) translateZ(120px);
+            -o-transform: rotateY(-90deg) translateZ(120px);
+            transform: rotateY(-90deg) translateZ(120px);
         }
 
         .cube .six {
-            background-color: rgb(22, 226, 38);
+            background-image: url(img/space6.jpg);
             -webkit-transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
+            -ms-transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
+            -moz-transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
+            -o-transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
+            transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
         }
     </style>
 </head>
-<body class="field" data-bind="drag:rotate, dragend:endRotate,transform:zoom, transformend: endZoom">
+<body data-bind="drag:rotate, dragend:endRotate,transform:zoom, transformend: endZoom">
+    <textarea id="textBox" >0</textarea>
     <div class="cube">
         <div class="face one"></div>
         <div class="face two"></div>
@@ -80,9 +116,20 @@
     document.ontouchmove = function (e) {
         e.preventDefault();
     }
+    var support = function (props) {
+        for (var i = 0, l = props.length; i < l; i++) {
+            if (typeof $('.cube')[0].style[props[i]] !== "undefined") {
+                return props[i];
+            }
+        }
+    };
+    var transformProps = 'transform webkitTransform mozTransform oTransform msTransform'.split(' '),
+        transformProp = support(transformProps);
+        
 
     function CubeViewModel() {
         var self = this,
+            zoom = 1, endZoom = 0;
             rotateX = 0, rotateY = 0,
             scale = 0, rotate = 0,
             endRotateX = 0, endRotateY = 0,
@@ -91,7 +138,7 @@
         self.rotate = function (ev) {
             rotateX = ev.gesture.deltaX / 2 + endRotateX;
             rotateY = (ev.gesture.deltaY / 2) * -1 + endRotateY;
-            $('.cube')[0].style.webkitTransform = "rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg)";
+            $('.cube')[0].style[transformProp] = "rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg)";
         };
         self.endRotate = function () {
             endRotateX = rotateX;
@@ -99,9 +146,9 @@
         };
         self.zoom = function (ev) {
 
-            rotate = ev.gesture.rotation + endRotate;
-
-            $('.field')[0].style.webkitTransform = "rotate(" + rotate + "deg)";
+            zoom = ev.gesture.scale + endZoom;
+            $('#textBox').text(zoom);
+            $('body')[0].style[transformProp] = "zoom(" + zoom + ")";
         };
         self.endZoom = function (ev) {
 
