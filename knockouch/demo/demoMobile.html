@@ -151,8 +151,9 @@
             $('#textBox').text(zoom);
             $('body')[0].style[transformProp] = "zoom(" + zoom + ")";
         };
-        self.endZoom = function (ev) {
-            $('#textBoxEnd').text(ev.gesture.scale);
+        self.endZoom = function () {
+            endZoom = zoom - 1;
+            zoom = 0;
         };
     };
     ko.applyBindings(new CubeViewModel());
