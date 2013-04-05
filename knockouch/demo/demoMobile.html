@@ -99,7 +99,8 @@
     </style>
 </head>
 <body data-bind="drag:rotate, dragend:endRotate,transform:zoom, transformend: endZoom">
-    <textarea id="textBox" >0</textarea>
+    <textarea id="textBox">0</textarea>
+    <textarea id="textBoxEnd">0</textarea>
     <div class="cube">
         <div class="face one"></div>
         <div class="face two"></div>
@@ -151,8 +152,7 @@
             $('body')[0].style[transformProp] = "zoom(" + zoom + ")";
         };
         self.endZoom = function (ev) {
-
-            endRotate = rotate;
+            $('#textBoxEnd').text(ev.gesture.scale);
         };
     };
     ko.applyBindings(new CubeViewModel());
