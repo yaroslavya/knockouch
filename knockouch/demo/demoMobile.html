@@ -147,6 +147,12 @@
         };
         self.zoom = function (ev) {
 
+            rotateX = ev.gesture.deltaX / 2 + endRotateX;
+            rotateY = (ev.gesture.deltaY / 2) * -1 + endRotateY;
+            $('.cube')[0].style[transformProp] = "rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg)";
+
+
+
             zoom = ev.gesture.scale + endZoom;
             $('#textBox').text(zoom);
             $('body')[0].style[transformProp] = "scale(" + zoom + ")";
