@@ -67,6 +67,7 @@
     <Content Include="demo\img\space6.jpg" />
     <Content Include="demo\knockouch-demo.html" />
     <Content Include="libs\hammer.js" />
+    <Content Include="libs\hammer.fakemultitouch.js" />
     <Content Include="libs\jquery.mobile-1.3.0.js" />
     <Content Include="libs\three.min.js" />
     <Content Include="libs\zepto.js" />
