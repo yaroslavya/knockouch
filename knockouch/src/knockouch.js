@@ -22,7 +22,7 @@
         };
     };
 
-    knockouch.searchtouchLib = function () {
+    knockouch.searchTouchLib = function () {
         for (i in knockouch.touchLibs) {
             var chosenLibrary = knockouch.touchLibs[i];
             if (chosenLibrary.isLoaded()) {
@@ -35,6 +35,7 @@
         }
     };
 
+    //TODO: we need to put it into documentation on how to add another touch library
     knockouch.selectTouchLib = function (library) {
         if (knockouch.touchLibs[library].isLoaded()) {
             knockouch.touchLib = knockouch.touchLibs[library];
@@ -60,7 +61,7 @@
             var eventName = knockouch.touchEvents[i];
             knockouch.makeTouchHandlerShortcut(eventName);
         }
-        knockouch.searchtouchLib();
+        knockouch.searchTouchLib();
     };
 
     knockouch.touchLibs.Hammer = {
