@@ -1,7 +1,7 @@
 ﻿(function (window, ko) {
     var knockouch = function (library, options) {
         knockouch.options = options || {};
-        knockouch.selectTouchLib(library);
+        knockouch.setTouchLib(library);
     };
 
     knockouch.touchLib = null;
@@ -30,13 +30,15 @@
                 break;
             }
         }
+        
+        //TODO: there`s a case where lib was setup before and iteration over default touchLibs will not throw exception
         if (knockouch.touchLib === null) {
             throw "could not find any touch library";
         }
     };
 
     //TODO: we need to put it into documentation on how to add another touch library
-    knockouch.selectTouchLib = function (library) {
+    knockouch.setTouchLib = function (library) {
         if (knockouch.touchLibs[library].isLoaded()) {
             knockouch.touchLib = knockouch.touchLibs[library];
         }
@@ -64,6 +66,17 @@
         knockouch.searchTouchLib();
     };
 
+    /*
+     *Wrappers to libraries that are used to provide touch handling. Currently hammer, zepto and jquery.mobile.
+     *Every wrapper consists of the following: 
+     * 1.method taht checks if library was loaded (isLoaded method by your captain obvious), 
+     * 2.provide eventSubstitutes object that contains mapping 
+     *   between library we need to use and knockouch and hammerjs events naming.
+     * 3.wrapper function that provides unified interface to bind touch events for knockoutjs bindings.
+     *   For details see knockouch.MakeTouchHandlerShortcut method.
+     *
+     * To add your own wrapper for touch library see our documentation
+     */
     knockouch.touchLibs.Hammer = {
         isLoaded: function () {
             return window.Hammer ? true : false;
@@ -130,7 +143,9 @@
         }
     };
 
+    //Setting one of the predefined libraries as selected touch library.
     knockouch.init();
+    
     window.knockouch = knockouch;
 
 }(this, ko));
