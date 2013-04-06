@@ -1,11 +1,11 @@
 ﻿(function (window, ko) {
     var knockouch = function (library, options) {
         knockouch.options = options || {};
-        knockouch.selectTouchLibrary(library);
+        knockouch.selectTouchLib(library);
     };
 
-    knockouch.touchLibrary = null;
-    knockouch.touchLibraries = {};
+    knockouch.touchLib = null;
+    knockouch.touchLibs = {};
     knockouch.touchEvents = ['tap', 'doubletap', 'hold', 'rotate',
                        'drag', 'dragleft', 'dragright', 'dragup',
                        'dragdown', 'transform', 'transformstart',
@@ -17,27 +17,27 @@
             init: function (element, valueAccessor, allBindingsAccessor) {
                 var handler = valueAccessor();
                 var allBindings = allBindingsAccessor();
-                knockouch.touchLibrary.wrapper(element, touchEventName, handler, allBindings);
+                knockouch.touchLib.wrapper(element, touchEventName, handler, allBindings);
             }
         };
     };
 
-    knockouch.searchTouchLibrary = function () {
-        for (i in knockouch.touchLibraries) {
-            var chosenLibrary = knockouch.touchLibraries[i];
-            if (chosenLibrary.isLoad()) {
-                knockouch.touchLibrary = chosenLibrary;
+    knockouch.searchtouchLib = function () {
+        for (i in knockouch.touchLibs) {
+            var chosenLibrary = knockouch.touchLibs[i];
+            if (chosenLibrary.isLoaded()) {
+                knockouch.touchLib = chosenLibrary;
                 break;
             }
         }
-        if (knockouch.touchLibrary === null) {
+        if (knockouch.touchLib === null) {
             throw "could not find any touch library";
         }
     };
 
-    knockouch.selectTouchLibrary = function (library) {
-        if (knockouch.touchLibraries[library].isLoad()) {
-            knockouch.touchLibrary = knockouch.touchLibraries[library];
+    knockouch.selectTouchLib = function (library) {
+        if (knockouch.touchLibs[library].isLoaded()) {
+            knockouch.touchLib = knockouch.touchLibs[library];
         }
         else {
             throw 'failed to select ' + library +
@@ -46,9 +46,9 @@
         }
     };
 
-    knockouch.unifyEventName = function (eventName, eventsRequiringReplacement) {
-        if (eventsRequiringReplacement[eventName] !== undefined) {
-            return eventsRequiringReplacement[eventName];
+    knockouch.unifyEventName = function (eventName, eventSubstitutes) {
+        if (eventSubstitutes[eventName] !== undefined) {
+            return eventSubstitutes[eventName];
         }
         else {
             throw "library you`ve selected doesn`t support " + eventName + ' event';
@@ -60,14 +60,12 @@
             var eventName = knockouch.touchEvents[i];
             knockouch.makeTouchHandlerShortcut(eventName);
         }
-        knockouch.searchTouchLibrary();
+        knockouch.searchtouchLib();
     };
 
-    knockouch.touchLibraries.Hammer = {
-        isLoad: function () {
-            if (window.Hammer) {
-                return true;
-            }
+    knockouch.touchLibs.Hammer = {
+        isLoaded: function () {
+            return window.Hammer ? true : false;
         },
         optionsList: ['doubletap_distance', 'doubletap_interval', 'drag',
                         'drag_block_horizontal', 'drag_block_vertical', 'drag_lock_to_axis',
@@ -94,13 +92,11 @@
         }
     };
 
-    knockouch.touchLibraries.jQueryMobile = {
-        isLoad: function () {
-            if (window.jQuery.mobile) {
-                return true;
-            }
+    knockouch.touchLibs.jQueryMobile = {
+        isLoaded: function () {
+            return window.jQuery.mobile ? true : false;
         },
-        eventsRequiringReplacement: {
+        eventSubstitutes: {
             'swipeleft': 'swipeLeft',
             'swiperight': 'swipeRight',
             'hold': 'taphold',
@@ -108,18 +104,16 @@
             'swipe': 'swipe'
         },
         wrapper: function (element, touchEventName, handler) {
-            touchEventName = knockouch.unifyEventName(touchEventName, this.eventsRequiringReplacement);
+            touchEventName = knockouch.unifyEventName(touchEventName, this.eventSubstitutes);
             jQuery(element).bind(touchEventName, handler);
         }
     };
 
-    knockouch.touchLibraries.Zepto = {
-        isLoad: function () {
-            if (window.Zepto) {
-                return true;
-            }
+    knockouch.touchLibs.Zepto = {
+        isLoaded: function () {
+            return window.Zepto ? true : false;
         },
-        eventsRequiringReplacement: {
+        eventSubstitutes: {
             'swipeleft': 'swipeLeft',
             'swiperight': 'swipeRight',
             'swipeup': 'swipeUp',
@@ -130,7 +124,7 @@
             'swipe': 'swipe'
         },
         wrapper: function (element, touchEventName, handler) {
-            touchEventName = knockouch.unifyEventName(touchEventName, this.eventsRequiringReplacement);
+            touchEventName = knockouch.unifyEventName(touchEventName, this.eventSubstitutes);
             Zepto(element)[touchEventName](handler);
         }
     };
