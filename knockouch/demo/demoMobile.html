@@ -12,6 +12,7 @@
     <style>
         body {
             padding: 0;
+            margin: 200px 0px 0px 0px;
             -webkit-perspective: 1000;
             -ms-perspective: 1000px;
             -moz-perspective: 1000px;
@@ -96,69 +97,22 @@
             -o-transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
             transform: rotateX(-90deg) translateZ(120px) rotate(180deg);
         }
-
-        .tooltip {
-            font-size:medium;
-            height: auto;
-            width: auto;
-            border-width: 1px;
-            border-style: dashed;
-            border-color: black;
-        }
     </style>
 </head>
-<body>
-    <div class="tooltip">
-        <a><code>class="cube" data-bind="drag: rotate, dragend: endRotate, transform: zoom, transformend: endZoom"</code></a>
-    </div>
-    <div class="cube" data-bind="drag: rotate, dragend: endRotate, transform: zoom, transformend: endZoom">
+<body data-bind="drag:rotate, dragend:endRotate,transform:zoom, transformend: endZoom">
+    <div class="cube">
         <div class="face one"></div>
-        <div class="face two">
-            <p>knockouch.js</p>
-            <p>Knockouch is a javascript library that adds touch bindings to knockoutjs library. So you can work with touch events in knockout way.</p>
-        </div>
-        <div class="face three">
-            <p>You can download the sources from github or use <a href="http://nuget.org/packages/knockouch/">nuget</a> or just type</p>
-            <p><strong>Install-Package knockouch</strong></p>
-            <p>in package manager console. Note, that nuget adds hammerjs as a default touch library.</p>
-        </div>
-        <div style="color: white" class="face four">
-            <p>for knockouch you need bind touch events with knockout bindings for example u can see how we use it for this demo</p>
-            <p data-bind="tap: showTooltip">Tap it for show code example</p>
-        </div>
+        <div class="face two"></div>
+        <div class="face three"></div>
+        <div class="face four"></div>
         <div class="face five"></div>
         <div class="face six"></div>
     </div>
-    <div class="tooltip">
-        <code>
-            //Optional code<Br>
-            knockouch("Hammer", { drag_min_distance: 5 });<Br>
-            //viewModel<Br>
-            function CubeViewModel() {<Br>
-                var self = this;<Br>
-                self.rotate = function (ev) {<Br>
-                    //rotate cube code<Br>
-                };<Br>
-                self.endRotate = function () {<Br>
-                    //end rotate cube code<Br>
-                };<Br>
-                self.zoom = function (ev) {<Br>
-                   //zoom cube code<Br>
-                };<Br>
-                self.endZoom = function () {<Br>
-                    //end zoom cube code<Br>
-                };<Br>
-            };<Br>
-
-            ko.applyBindings(new CubeViewModel());<Br>
-        </code>
-    </div>
-
 </body>
 </html>
 <script>
     knockouch("Hammer", { drag_min_distance: 5 });
-    $('.tooltip').hide();
+
     document.ontouchmove = function (e) {
         e.preventDefault();
     }
@@ -171,10 +125,10 @@
     };
     var transformProps = 'transform webkitTransform mozTransform oTransform msTransform'.split(' '),
         transformProp = support(transformProps);
-
+        
     function CubeViewModel() {
         var self = this,
-            zoom = 1, endZoom = 0,
+            zoom = 1, endZoom = 0;
             rotateX = 0, rotateY = 0,
             scale = 0, rotate = 0,
             endRotateX = 0, endRotateY = 0,
@@ -197,13 +151,8 @@
             endZoom = zoom - 1;
             zoom = 1;
         };
-
-        self.showTooltip = function () {
-            $('.tooltip').show();
-        };
     };
     Hammer.plugins.fakeMultitouch();
     ko.applyBindings(new CubeViewModel());
-
 
 </script>
