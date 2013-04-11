@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="../libs/hammer.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../src/knockouch.js"></script>
+</head>
+<body>
+    <h4>People</h4>
+<ul data-bind="foreach: people">
+    <li>
+        Name at position <span data-bind="text: $index"> </span>:
+        <span data-bind="text: name"> </span>
+        <a href="#" data-bind="tap: $parent.removePerson">Remove</a>
+    </li>
+</ul>
+<button data-bind="tap: addPerson">Add</button>
+</body>
+</html>
+<script>
+    function AppViewModel() {
+        var self = this;
+
+        self.people = ko.observableArray([
+            { name: 'Bert' },
+            { name: 'Charles' },
+            { name: 'Denise' }
+        ]);
+
+        self.addPerson = function () {
+            self.people.push({ name: "New at " + new Date() });
+        };
+
+        self.removePerson = function (data,event) {
+            self.people.remove(data);
+        }
+    }
+
+    ko.applyBindings(new AppViewModel());
+</script>

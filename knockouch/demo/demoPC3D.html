@@ -52,7 +52,7 @@
 
             renderer.render(scene, camera);
         };
-        self.rotate = function (ev) {
+        self.rotate = function (data, ev) {
             rotateX = ev.gesture.deltaY / 200 + endRotateX;
             rotateY = ev.gesture.deltaX / 200 + endRotateY;
         };

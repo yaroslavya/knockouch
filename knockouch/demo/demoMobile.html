@@ -134,7 +134,7 @@
             endRotateX = 0, endRotateY = 0,
             endScale = 0, endRotate = 0;
 
-        self.rotate = function (ev) {
+        self.rotate = function (data,ev) {
             rotateX = ev.gesture.deltaX / 2 + endRotateX;
             rotateY = (ev.gesture.deltaY / 2) * -1 + endRotateY;
             $('.cube')[0].style[transformProp] = "rotateX(" + rotateY + "deg) rotateY(" + rotateX + "deg)";
@@ -143,7 +143,7 @@
             endRotateX = rotateX;
             endRotateY = rotateY;
         };
-        self.zoom = function (ev) {
+        self.zoom = function (data,ev) {
             zoom = ev.gesture.scale + endZoom;
             $('body')[0].style[transformProp] = "scale(" + zoom + ")";
         };
