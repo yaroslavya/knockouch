@@ -96,6 +96,9 @@
     <Content Include="libs\knockout-2.2.1.js" />
     <Content Include="scripts\_reference.js" />
     <Content Include="src\knockouch.js" />
+    <Content Include="src\knockouch.min.js">
+      <DependentUpon>knockouch.js</DependentUpon>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -111,6 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="demo\css\animations.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\knockouch.min.js.map">
+      <DependentUpon>knockouch.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
