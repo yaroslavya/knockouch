@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Knockouching people one by one</title>
+     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+    <script src="../libs/hammer.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../src/knockouch.js"></script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr><th>First name</th><th>Last name</th></tr>
+        </thead>
+        <tbody data-bind="foreach: people">
+            <tr data-bind="tap:tapHandler">
+                <!--the right way is to use computed, this is just quick and dirty-->
+                <td data-bind="text: firstName +' '+ lastName"></td>
+            </tr>
+        </tbody>
+    </table>
+    <span data-bind="text:tappedPerson"></span>
+ 
+    <script type="text/javascript">
+        function tapHandler(data, event) {
+            //vm.tappedPerson('you`ve knockouched: ' + e.target.innerText);
+            console.log(data);
+            console.log(event);
+        };
+        
+        var vm = {
+            people: [
+                { firstName: 'Bert', lastName: 'Bertington' },
+                { firstName: 'Charles', lastName: 'Charlesforth' },
+                { firstName: 'Denise', lastName: 'Dentiste' }
+            ],
+            tappedPerson: ko.observable('')
+        };
+        
+        ko.applyBindings(vm);
+    </script>
+</body>
+</html>

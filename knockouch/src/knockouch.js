@@ -14,10 +14,15 @@
 
     knockouch.makeTouchHandlerShortcut = function (touchEventName) {
         ko.bindingHandlers[touchEventName] = {
-            init: function (element, valueAccessor, allBindingsAccessor) {
+            init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
                 var handler = valueAccessor();
                 var allBindings = allBindingsAccessor();
-                knockouch.touchLib.wrapper(element, touchEventName, handler, allBindings);
+                
+                var wrappedHandler = function(e) {
+                    handler(viewModel, e);
+                };
+                
+                knockouch.touchLib.wrapper(element, touchEventName, wrappedHandler, allBindings);
             }
         };
     };
@@ -102,6 +107,9 @@
         },
         wrapper: function (element, touchEventName, handler, bindings) {
             var extendedOptions = this.setMoreOptions(bindings);
+            var wrappedHandler = function () {
+                
+            };
             Hammer(element, extendedOptions).on(touchEventName, handler);
         }
     };
