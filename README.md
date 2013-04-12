@@ -6,6 +6,8 @@
 
 - Adds bindings for: tap, doubletap, hold, rotate, drag, transform, swipe, pinch
 
+- Provides touch related event data, like distance, angle etc + knockout data.
+
 - By default works with any of 3 touch libraries: [hammer](https://github.com/EightMedia/hammer.js), [zepto](http://zeptojs.com/), [jquery.mobile](http://jquerymobile.com/). You can also add your own touch lib see details here.
 
 - Detects touch library you are using automatically. You can also set specific library explicitly
@@ -25,6 +27,8 @@ Sure, you can have a look at [this](http://htmlpreview.github.com/?https://githu
 - More touch libraries to work with
 
 - Various options and better tuning, like prevent interaction with click handlers if tap is there etc
+
+- <del>Provides touch related event data, like distance, angle etc + knockout data.</del> was just added by user request.
 
 ## License
 
