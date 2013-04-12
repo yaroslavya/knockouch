@@ -23,7 +23,7 @@
  
     <script type="text/javascript">
         function tapHandler(data, event) {
-            //vm.tappedPerson('you`ve knockouched: ' + e.target.innerText);
+            vm.tappedPerson('you`ve knockouched: ' + data.firstName+ data.lastName);
             console.log(data);
             console.log(event);
         };
