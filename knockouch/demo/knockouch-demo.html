@@ -12,13 +12,13 @@
         <span data-bind="text:someText"></span>
         <button data-bind="tap:tappy, hold:tappy, swipe:tappy, doubletap:tappy">knockouch me</button>
         <ul data-bind="foreach:items">
-            <li><span data-bind="tap:itemTap"> tap me clap me</span></li>
+            <li><span data-bind="tap:$root.itemTap"> tap me clap me</span></li>
         </ul>
     </body>
     <script>
         var model = {
             someText: ko.observable('do something with'),
-            tappy: function (e) {
+            tappy: function (data, e) {
                 model.someText('you just ' + e.type + 'ed.');
             },
             items: [1, 2, 3, 4],
