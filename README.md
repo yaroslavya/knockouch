@@ -16,15 +16,14 @@
 
 You can download the sources from github or use [nuget](http://nuget.org/packages/knockouch/) or just type **Install-Package knockouch** in package manager console. Note, that nuget adds hammerjs as a default touch library.
 
+
 ## I just wanted to see some cool touch demos/how it works
 
 Sure, you can have a look at [this](http://htmlpreview.github.com/?https://github.com/yaroslavya/knockouch/blob/master/knockouch/demo/iphone.html) in chrome and firefox only or [this](http://htmlpreview.github.io/?https://github.com/yaroslavya/knockouch/blob/dev/knockouch/demo/demoMobile.html) everywhere including the latest android and iphone. 
 
 ## Features coming soon
 
-- AMD support
-
-- More touch libraries to work with
+- More touch libraries to work with (quojs or touchpunch are planned).
 
 - Various options and better tuning, like prevent interaction with click handlers if tap is there etc
 
