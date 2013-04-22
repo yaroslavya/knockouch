@@ -16,6 +16,29 @@
 
 You can download the sources from github or use [nuget](http://nuget.org/packages/knockouch/) or just type **Install-Package knockouch** in package manager console. Note, that nuget adds hammerjs as a default touch library.
 
+```html
+<button data-bind="tap:tapHandler, hold:tapHandler, swipe:swipeHandler, doubletap:doubletapHandler">knockouch me</button>
+```
+
+And here is the knockoutjs model to handle it:
+```javascript
+//your knockoutjs view model:
+var model = {
+            someText: ko.observable('do something with'),
+            tapHandler: function (data, e) {
+				//Note, event types will be tap or hold, depending on what your action will be.
+                model.someText('you just ' + e.type + 'ed.');
+            },
+			swipeHandler: function (data, e) {
+                model.someText('you just swiped!!!');
+            },
+			doubletapHandler: function (data, e) {
+                model.someText('doubletap goes here!!!');
+            }
+        };
+		//applying bindings as usual
+        ko.applyBindings(model);
+```
 
 ## I just wanted to see some cool touch demos/how it works
 
