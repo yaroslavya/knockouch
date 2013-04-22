@@ -107,9 +107,7 @@
         },
         wrapper: function (element, touchEventName, handler, bindings) {
             var extendedOptions = this.setMoreOptions(bindings);
-            var wrappedHandler = function () {
-                
-            };
+            
             Hammer(element, extendedOptions).on(touchEventName, handler);
         }
     };
