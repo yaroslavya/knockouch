@@ -16,6 +16,7 @@
 
 You can download the sources from github or use [nuget](http://nuget.org/packages/knockouch/) or just type **Install-Package knockouch** in package manager console. Note, that nuget adds hammerjs as a default touch library.
 
+After adding knockouch you can just start using new touch bindings, like in the example below:
 ```html
 <button data-bind="tap:tapHandler, hold:tapHandler, swipe:swipeHandler, doubletap:doubletapHandler">knockouch me</button>
 ```
