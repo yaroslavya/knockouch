@@ -47,9 +47,9 @@ Sure, you can have a look at [this](http://htmlpreview.github.com/?https://githu
 
 ## Features coming soon
 
-- More touch libraries to work with (quojs or touchpunch are planned).
-
-- Various options and better tuning, like prevent interaction with click handlers if tap is there etc
+- knockout 2.x support
+ 
+- bower support
 
 - <del>Provides touch related event data, like distance, angle etc + knockout data.</del> was just added by user request.
 
