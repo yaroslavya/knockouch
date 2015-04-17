@@ -117,8 +117,8 @@
             return window.jQuery.mobile ? true : false;
         },
         eventSubstitutes: {
-            'swipeleft': 'swipeLeft',
-            'swiperight': 'swipeRight',
+            'swipeleft': 'swipeleft',
+            'swiperight': 'swiperight',
             'hold': 'taphold',
             'tap': 'tap',
             'swipe': 'swipe'
