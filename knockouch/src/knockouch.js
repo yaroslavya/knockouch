@@ -1,4 +1,7 @@
 ﻿(function (window, ko) {
+﻿    
+﻿   'use strict';
+﻿   
     var knockouch = function (library, options) {
         knockouch.options = options || {};
         knockouch.setTouchLib(library);
@@ -28,29 +31,28 @@
     };
 
     knockouch.searchTouchLib = function () {
-        for (i in knockouch.touchLibs) {
-            var chosenLibrary = knockouch.touchLibs[i];
-            if (chosenLibrary.isLoaded()) {
-                knockouch.touchLib = chosenLibrary;
-                break;
+        var touchlib;
+    
+        for (touchlib in knockouch.touchLibs) {
+            if (knockouch.touchLibs.hasOwnProperty(touchlib) && knockouch.touchLibs[touchlib].isLoaded() ) {
+                knockouch.touchLib = knockouch.touchLibs[touchlib];
+                return;
             }
         }
-        
+    
         //TODO: there`s a case where lib was setup before and iteration over default touchLibs will not throw exception
-        if (knockouch.touchLib === null) {
-            throw "could not find any touch library";
-        }
+        throw new ReferenceError('could not find any touch library');
     };
-
+    
     //TODO: we need to put it into documentation on how to add another touch library
     knockouch.setTouchLib = function (library) {
         if (knockouch.touchLibs[library].isLoaded()) {
             knockouch.touchLib = knockouch.touchLibs[library];
         }
         else {
-            throw 'failed to select ' + library +
-            ' check there`s no typos in ' + library +
-            ' To make sure it`s supported refer to our documentation.';
+            throw new Error('failed to select ' + library +
+            ' check there\'s no typos in ' + library +
+            ' To make sure it\'s supported refer to our documentation.');
         }
     };
 
@@ -59,14 +61,19 @@
             return eventSubstitutes[eventName];
         }
         else {
-            throw "library you`ve selected doesn`t support " + eventName + ' event';
+            throw "library you've selected doesn't support " + eventName + ' event';
         }
     };
 
     knockouch.init = function () {
+        var i;
+        var eventName;
+    
         for (i in knockouch.touchEvents) {
-            var eventName = knockouch.touchEvents[i];
-            knockouch.makeTouchHandlerShortcut(eventName);
+            if (knockouch.touchEvents.hasOwnProperty(i)) {
+                eventName = knockouch.touchEvents[i];
+                knockouch.makeTouchHandlerShortcut(eventName);
+            }
         }
         knockouch.searchTouchLib();
     };
@@ -97,10 +104,15 @@
                         'transform_min_rotation', 'transform_min_scale'],
         setMoreOptions: function (bindings) {
             var extendedOptions = knockouch.options;
+            var i;
+            var optionName;
+    
             for (i in this.optionsList) {
-                var optionName = this.optionsList[i];
-                if (bindings[optionName] !== undefined && bindings[optionName].constructor !== Function) {
-                    knockouch.options[optionName] = bindings[optionName];
+                if (this.optionsList.hasOwnProperty(i)) {
+                    optionName = this.optionsList[i];
+                    if (bindings[optionName] !== undefined && bindings[optionName].constructor !== Function) {
+                        knockouch.options[optionName] = bindings[optionName];
+                    }
                 }
             }
             return extendedOptions;
@@ -114,7 +126,7 @@
 
     knockouch.touchLibs.jQueryMobile = {
         isLoaded: function () {
-            return window.jQuery.mobile ? true : false;
+            return window.jQuery && window.jQuery.mobile ? true : false;
         },
         eventSubstitutes: {
             'swipeleft': 'swipeleft',
@@ -154,4 +166,4 @@
     
     window.knockouch = knockouch;
 
-}(this, ko));
+}(window, ko));
